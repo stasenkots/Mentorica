@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mentorica.repositories.GoogleServicesRepository
+import com.mentorica.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,7 +14,7 @@ class MainActivityViewModel @Inject constructor(
     ): ViewModel() {
 
     fun authenticate(data: Intent) {
-        viewModelScope.launch {
+        viewModelScope.launchIO {
             googleServicesRepository.authenticate(data)
         }
     }
