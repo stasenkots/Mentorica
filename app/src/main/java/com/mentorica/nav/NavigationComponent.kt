@@ -22,7 +22,7 @@ fun NavigationComponent(
         navController = navController,
         startDestination = NavTarget.SplashScreen.label
     ) {
-        composable( NavTarget.SplashScreen.label){
+        composable(NavTarget.SplashScreen.label){
             SplashScreen()
         }
     }
