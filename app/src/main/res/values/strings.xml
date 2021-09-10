@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Mentorica</string>
+    <string name="get_started">Get Started</string>
+    <string name="we_can">We can </string>
+    <string name="help_you">help you</string>
+    <string name="to_be_a_better_version">to be a better version of</string>
+    <string name="yourself"> yourself.</string>
 </resources>
