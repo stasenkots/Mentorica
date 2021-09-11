@@ -1,1 +1,3 @@
 /build
+/src/main/res/values/config.xml
+/src/main/java/com/mentorica/utils/GoogleAuthConstants.kt
