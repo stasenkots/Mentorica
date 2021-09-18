@@ -26,13 +26,13 @@
 
         <meta-data
             android:name="com.parse.SERVER_URL"
-            android:value="https://mentorica.b4a.io" />
+            android:value="@string/back4app_server_url" />
         <meta-data
             android:name="com.parse.APPLICATION_ID"
-            android:value="9VkRjYJp5YT4mGsSFaUHZ019sMbMxyZBNYl5s3EO" />
+            android:value="@string/back4app_app_id" />
         <meta-data
             android:name="com.parse.CLIENT_KEY"
-            android:value="aJsSaXydNNmxo1dxWaaePdcB9Wm7E0QCaWJZ288m" />
+            android:value="@string/back4app_client_key" />
 
     </application>
 
