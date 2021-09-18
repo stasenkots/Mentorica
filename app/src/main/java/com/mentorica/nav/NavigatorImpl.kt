@@ -12,4 +12,8 @@ class NavigatorImpl @Inject constructor(): Navigator {
     override fun navigateTo(navTarget: NavTarget) {
         _sharedFlow.tryEmit(navTarget)
     }
+
+    override fun navigateToMain() {
+        _sharedFlow
+    }
 }

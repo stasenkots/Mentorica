@@ -7,4 +7,5 @@ interface Navigator {
     val events: SharedFlow<NavTarget>
 
     fun navigateTo(navTarget: NavTarget)
+
 }

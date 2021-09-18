@@ -1,5 +1,8 @@
 package com.mentorica.nav
 
+import androidx.navigation.NavOptions
+import androidx.navigation.NavOptionsBuilder
+
 sealed class NavTarget(val label: String) {
 
     object SplashScreen: NavTarget("splash")
@@ -8,7 +11,13 @@ sealed class NavTarget(val label: String) {
         sealed class Type(val value: String)
         object Login: Type("login")
         object Register: Type("register")
-        object None: Type("{login_type}")
+        private object None: Type("{login_type}")
     }
 
+    object Main: NavTarget("main"){
+        val navOptionsBuilder = NavOptions.Builder()
+            .setLaunchSingleTop(true)
+            .setPopUpTo(SplashScreen.label,true)
+            .build()
+    }
 }

@@ -11,8 +11,6 @@ import com.mentorica.utils.NAVIGATION
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-
-
 @Composable
 fun NavigationComponent(
     navigator: Navigator,
@@ -21,12 +19,12 @@ fun NavigationComponent(
     NavigationListener(navigator, navController)
     NavHost(
         navController = navController,
-        startDestination = NavTarget.SplashScreen.label
+        startDestination = NavTarget.SplashScreen.label,
     ) {
-        composable(NavTarget.SplashScreen.label){
+        composable(NavTarget.SplashScreen.label) {
             SplashScreen()
         }
-        composable(NavTarget.GetStartedScreen.label){
+        composable(NavTarget.GetStartedScreen.label) {
             GetStartedScreen()
         }
     }
@@ -38,9 +36,13 @@ fun NavigationListener(
     navController: NavHostController,
 ) {
     LaunchedEffect(NAVIGATION) {
-        navigator.events.onEach {
-            navController.navigate(it.label)
+        navigator.events.onEach { target ->
+            if (target is NavTarget.Main) {
+                navController.navigate(target.label, target.navOptionsBuilder)
+            } else {
+                navController.navigate(target.label)
+            }
         }.launchIn(this)
     }
-
 }
+
