@@ -5,4 +5,6 @@
     <string name="help_you">help you</string>
     <string name="to_be_a_better_version">to be a better version of</string>
     <string name="yourself"> yourself.</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.mentorica.ui.get_started.GetStartedScreen
 import com.mentorica.ui.splash.SplashScreen
 import com.mentorica.utils.NAVIGATION
 import kotlinx.coroutines.flow.launchIn
@@ -25,6 +26,9 @@ fun NavigationComponent(
         composable(NavTarget.SplashScreen.label){
             SplashScreen()
         }
+        composable(NavTarget.GetStartedScreen.label){
+            GetStartedScreen()
+        }
     }
 }
 
@@ -34,7 +38,7 @@ fun NavigationListener(
     navController: NavHostController,
 ) {
     LaunchedEffect(NAVIGATION) {
-        navigator.sharedFlow.onEach {
+        navigator.events.onEach {
             navController.navigate(it.label)
         }.launchIn(this)
     }
