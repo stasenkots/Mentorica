@@ -1,6 +1,5 @@
 package com.mentorica.ui.components
 
-import android.service.autofill.OnClickAction
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -16,7 +15,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mentorica.R
-import com.mentorica.ui.get_started.GetStarted
 import com.mentorica.ui.theme.ButtonColor
 
 
@@ -27,7 +25,7 @@ fun MButton(
     modifier: Modifier = Modifier
 ) {
     Button(
-        modifier = modifier,
+        modifier = modifier.width(300.dp),
         shape = CircleShape,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = ButtonColor,
@@ -36,7 +34,7 @@ fun MButton(
         onClick = onClick
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 70.dp,vertical = 7.dp),
+            modifier = Modifier.padding(horizontal = 70.dp, vertical = 7.dp),
             text = stringResource(stringId),
             fontSize = 17.sp,
             fontWeight = FontWeight.Bold
@@ -49,6 +47,6 @@ fun MButton(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MButton(onClick = {  }, stringId = R.string.app_name)
+    MButton(onClick = { }, stringId = R.string.app_name)
 }
 
