@@ -18,6 +18,7 @@ import com.mentorica.ui.get_started.GetStartedScreen
 import com.mentorica.ui.theme.MentoricaTheme
 import com.mentorica.utils.GlobalStates.errorBus
 import com.mentorica.utils.RC_SIGN_IN
+import com.parse.google.ParseGoogleUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,7 +28,6 @@ class MainActivity: ComponentActivity() {
     @Inject
     lateinit var navigator: Navigator
 
-    private val viewModel: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,22 +35,15 @@ class MainActivity: ComponentActivity() {
             val navController = rememberNavController()
             MentoricaTheme {
                 Surface(color = MaterialTheme.colors.background) {
-//                    NavigationComponent(navigator, navController)
-//                    if (errorBus.value != null) {
-//                        ShowError(errorBus.value?.message)
-//                    }
-                    GetStartedScreen()
+                    NavigationComponent(navigator, navController)
+                    if (errorBus.value != null) {
+                        ShowError(errorBus.value?.message)
+                    }
                 }
             }
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN && data != null) {
-            viewModel.authenticate(data)
-        }
-    }
 
     @Composable
     fun ShowError(error: String?) {
