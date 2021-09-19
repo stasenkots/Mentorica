@@ -2,6 +2,7 @@ package com.mentorica.nav
 
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import timber.log.Timber
 import javax.inject.Inject
 
 class NavigatorImpl @Inject constructor(): Navigator {
@@ -11,9 +12,5 @@ class NavigatorImpl @Inject constructor(): Navigator {
 
     override fun navigateTo(navTarget: NavTarget) {
         _sharedFlow.tryEmit(navTarget)
-    }
-
-    override fun navigateToMain() {
-        _sharedFlow
     }
 }
