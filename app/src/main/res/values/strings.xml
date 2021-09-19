@@ -7,4 +7,7 @@
     <string name="yourself"> yourself.</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="hey_there">Hey there,</string>
+    <string name="join_community">Join community!</string>
+    <string name="password">Password</string>
 </resources>
