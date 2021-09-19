@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mentorica.R
-import com.mentorica.ui.theme.ButtonColor
+import com.mentorica.ui.theme.Blue
 
 
 @Composable
@@ -28,7 +28,7 @@ fun MButton(
         modifier = modifier.width(300.dp),
         shape = CircleShape,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = ButtonColor,
+            backgroundColor = Blue,
             contentColor = White
         ),
         onClick = onClick
