@@ -11,6 +11,7 @@ import com.mentorica.screens.login.Login
 import com.mentorica.screens.login.LoginScreen
 import com.mentorica.screens.splash.SplashScreen
 import com.mentorica.utils.NAVIGATION
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
@@ -31,9 +32,9 @@ fun NavigationComponent(
         composable(NavTarget.GetStartedScreen.label) {
             GetStartedScreen()
         }
-        composable("login/{login_type}") { backStackEntry->
+        composable(NavTarget.LoginScreen().label) { backStackEntry->
             val authType =
-                AuthType.valueOf(backStackEntry.arguments?.getString("login_type").orEmpty())
+                AuthType.valueOf(backStackEntry.arguments?.getString(LOGIN_TYPE).orEmpty())
             LoginScreen(authType = authType)
         }
     }

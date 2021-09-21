@@ -14,7 +14,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.mentorica.nav.Navigator
 import com.mentorica.nav.NavigationComponent
-import com.mentorica.ui.get_started.GetStartedScreen
 import com.mentorica.ui.theme.MentoricaTheme
 import com.mentorica.utils.GlobalStates.errorBus
 import com.mentorica.utils.RC_SIGN_IN
