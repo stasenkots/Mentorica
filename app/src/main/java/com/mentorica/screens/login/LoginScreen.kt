@@ -27,9 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
 import com.mentorica.models.AuthType
-import com.mentorica.screens.get_started.GetStarted
 import com.mentorica.ui.components.MButton
-import com.mentorica.ui.theme.Orange
 import com.mentorica.ui.theme.poppins
 
 @Composable
@@ -116,7 +114,7 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
                 shape = CircleShape,
             )
             Spacer(modifier = Modifier.height(30.dp))
-            val buttonText = if (authType == AuthType.Login){
+            val buttonText = if (authType == AuthType.login){
                 stringResource(R.string.login)
             } else{
                 stringResource(R.string.register)
@@ -138,5 +136,5 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    Login({ _, _-> }, AuthType.Register)
+    Login({ _, _-> }, AuthType.register)
 }

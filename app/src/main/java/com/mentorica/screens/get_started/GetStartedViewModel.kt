@@ -13,10 +13,10 @@ class GetStartedViewModel @Inject constructor(
 ): ViewModel(), Navigator by navigator {
 
     fun login() {
-        navigator.navigateTo(NavTarget.LoginScreen(AuthType.Login))
+        navigator.navigateTo(NavTarget.LoginScreen(AuthType.login))
     }
 
     fun register(){
-        navigator.navigateTo(NavTarget.LoginScreen(AuthType.Register))
+        navigator.navigateTo(NavTarget.LoginScreen(AuthType.register))
     }
 }

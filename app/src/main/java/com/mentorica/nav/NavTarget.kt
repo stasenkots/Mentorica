@@ -7,7 +7,7 @@ sealed class NavTarget(val label: String) {
 
     object SplashScreen: NavTarget("splash")
     object GetStartedScreen: NavTarget("get started")
-    class LoginScreen(authType: AuthType = AuthType.None): NavTarget("login/${authType.value}")
+    class LoginScreen(authType: AuthType = AuthType.none): NavTarget("login/${authType.value}")
     object Main: NavTarget("main") {
         val navOptionsBuilder = NavOptions.Builder()
             .setLaunchSingleTop(true)
