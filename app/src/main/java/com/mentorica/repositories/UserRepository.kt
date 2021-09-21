@@ -16,9 +16,9 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
         val username = data[UserLogin.username] as String
         val password = data[UserLogin.password] as String
         val authType = data[UserLogin.authType] as AuthType
-        if(authType == AuthType.Login) {
+        if(authType == AuthType.login) {
             parseService.login(username, password)
-        } else if(authType == AuthType.Register) {
+        } else if(authType == AuthType.register) {
             parseService.register(username, password)
         }
 

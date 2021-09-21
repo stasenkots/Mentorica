@@ -47,10 +47,10 @@ fun NavigationListener(
 ) {
     LaunchedEffect(NAVIGATION) {
         navigator.events.onEach { target->
+            Timber.d("Navigate to ${target.label}")
             if(target is NavTarget.Main) {
                 navController.navigate(target.label, target.navOptionsBuilder)
             } else {
-                Timber.e(target.label)
                 navController.navigate(target.label)
             }
         }.launchIn(this)
