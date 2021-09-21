@@ -1,5 +1,6 @@
 package com.mentorica.screens.login
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -31,14 +32,24 @@ import com.mentorica.ui.theme.poppins
 
 @Composable
 fun LoginScreen(authType: AuthType, viewModel: LoginViewModel = hiltViewModel()) {
-    Login(viewModel::authenticate, authType)
+    Login(
+        authenticate = viewModel::authenticate,
+        authType = authType,
+        emailState = viewModel.email,
+        passwordState = viewModel.password,
+    )
 }
 
 @Composable
-fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
+fun Login(
+    authenticate: () -> Unit,
+    authType: AuthType,
+    emailState: MutableState<String>,
+    passwordState: MutableState<String>,
+) {
 
-    var login by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var email by remember { emailState }
+    var password by remember { passwordState }
     var passwordVisibility by remember { mutableStateOf(true) }
 
 
@@ -76,9 +87,9 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
         ) {
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = login,
-                onValueChange = { login = it },
-                label = { Text(text = stringResource(R.string.login)) },
+                value = email,
+                onValueChange = { email = it },
+                label = { Text(text = stringResource(R.string.email)) },
                 leadingIcon = {
                     Icon(
                         painter = painterResource(R.drawable.ic_outline_person_24),
@@ -88,8 +99,8 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
                 shape = CircleShape,
                 colors = outlinedTextFieldColors(
                     focusedBorderColor = Blue,
-                    focusedLabelColor = Blue
-                )
+                    focusedLabelColor = Blue,
+                ),
             )
             Spacer(modifier = Modifier.padding(vertical = 5.dp))
             OutlinedTextField(
@@ -117,8 +128,8 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
                 shape = CircleShape,
                 colors = outlinedTextFieldColors(
                     focusedBorderColor = Blue,
-                    focusedLabelColor = Blue
-                )
+                    focusedLabelColor = Blue,
+                ),
             )
             Spacer(modifier = Modifier.height(30.dp))
             val buttonText = if(authType == AuthType.login) {
@@ -131,7 +142,7 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
                 modifier = Modifier
                     .width(230.dp)
                     .align(Alignment.CenterHorizontally),
-                onClick = { authenticate(login, password) },
+                onClick = authenticate,
                 text = buttonText,
             )
             Spacer(modifier = Modifier.height(50.dp))
@@ -140,8 +151,9 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
     }
 }
 
+@SuppressLint("UnrememberedMutableState")
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    Login({ _, _-> }, AuthType.register)
+    Login({ }, AuthType.register, mutableStateOf(""), mutableStateOf(""))
 }

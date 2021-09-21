@@ -10,4 +10,5 @@
     <string name="hey_there">Hey there,</string>
     <string name="join_community">Join community!</string>
     <string name="password">Password</string>
+    <string name="email">Email</string>
 </resources>
