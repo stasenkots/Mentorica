@@ -3,10 +3,8 @@ package com.mentorica.screens.login
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.TextFieldDefaults.outlinedTextFieldColors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.outlined.Visibility
@@ -28,6 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
 import com.mentorica.models.AuthType
 import com.mentorica.ui.components.MButton
+import com.mentorica.ui.theme.Blue
 import com.mentorica.ui.theme.poppins
 
 @Composable
@@ -87,6 +86,10 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
                     )
                 },
                 shape = CircleShape,
+                colors = outlinedTextFieldColors(
+                    focusedBorderColor = Blue,
+                    focusedLabelColor = Blue
+                )
             )
             Spacer(modifier = Modifier.padding(vertical = 5.dp))
             OutlinedTextField(
@@ -112,11 +115,15 @@ fun Login(authenticate: (String, String) -> Unit, authType: AuthType) {
                     )
                 },
                 shape = CircleShape,
+                colors = outlinedTextFieldColors(
+                    focusedBorderColor = Blue,
+                    focusedLabelColor = Blue
+                )
             )
             Spacer(modifier = Modifier.height(30.dp))
-            val buttonText = if (authType == AuthType.login){
+            val buttonText = if(authType == AuthType.login) {
                 stringResource(R.string.login)
-            } else{
+            } else {
                 stringResource(R.string.register)
             }
 
