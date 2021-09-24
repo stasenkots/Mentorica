@@ -3,12 +3,7 @@ package com.mentorica.screens.login
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
-import androidx.compose.material.TextFieldDefaults.outlinedTextFieldColors
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,8 +21,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
 import com.mentorica.models.AuthType
+import com.mentorica.ui.components.IconText
 import com.mentorica.ui.components.MButton
-import com.mentorica.ui.theme.Blue
+import com.mentorica.ui.components.PasswordText
 import com.mentorica.ui.theme.poppins
 
 @Composable
@@ -37,6 +33,8 @@ fun LoginScreen(authType: AuthType, viewModel: LoginViewModel = hiltViewModel())
         authType = authType,
         emailState = viewModel.email,
         passwordState = viewModel.password,
+        loginErrorState = viewModel.loginError,
+        passwordErrorState = viewModel.passwordError
     )
 }
 
@@ -46,12 +44,9 @@ fun Login(
     authType: AuthType,
     emailState: MutableState<String>,
     passwordState: MutableState<String>,
+    loginErrorState: MutableState<Int?>,
+    passwordErrorState: MutableState<Int?>,
 ) {
-
-    var email by remember { emailState }
-    var password by remember { passwordState }
-    var passwordVisibility by remember { mutableStateOf(true) }
-
 
     Image(
         modifier = Modifier
@@ -79,64 +74,36 @@ fun Login(
             textAlign = TextAlign.Center,
             fontFamily = poppins,
         )
-        Spacer(modifier = Modifier.height(450.dp))
+        Spacer(modifier = Modifier.height(400.dp))
         Column(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(horizontal = 40.dp),
         ) {
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = email,
-                onValueChange = { email = it },
-                label = { Text(text = stringResource(R.string.email)) },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_outline_person_24),
-                        contentDescription = "",
-                    )
-                },
-                shape = CircleShape,
-                colors = outlinedTextFieldColors(
-                    focusedBorderColor = Blue,
-                    focusedLabelColor = Blue,
-                ),
-            )
+
             Spacer(modifier = Modifier.padding(vertical = 5.dp))
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = password,
-                onValueChange = { password = it },
-                label = { Text(text = stringResource(R.string.password)) },
-                trailingIcon = {
-                    val image = if(passwordVisibility)
-                        Icons.Outlined.Visibility
-                    else Icons.Filled.VisibilityOff
 
-                    IconButton(
-                        onClick = { passwordVisibility = !passwordVisibility },
-                        content = { Icon(imageVector = image, "") },
-                    )
-
-                },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_lock_24),
-                        contentDescription = "",
-                    )
-                },
-                shape = CircleShape,
-                colors = outlinedTextFieldColors(
-                    focusedBorderColor = Blue,
-                    focusedLabelColor = Blue,
-                ),
+            IconText(
+                textState = emailState,
+                icon = R.drawable.ic_outline_person_24,
+                hint = R.string.login,
+                errorState = loginErrorState,
             )
-            Spacer(modifier = Modifier.height(30.dp))
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            PasswordText(
+                passwordState = passwordState,
+                errorState = passwordErrorState,
+            )
+
             val buttonText = if(authType == AuthType.login) {
                 stringResource(R.string.login)
             } else {
                 stringResource(R.string.register)
             }
+
+            Spacer(modifier = Modifier.height(30.dp))
 
             MButton(
                 modifier = Modifier
@@ -145,7 +112,7 @@ fun Login(
                 onClick = authenticate,
                 text = buttonText,
             )
-            Spacer(modifier = Modifier.height(50.dp))
+            Spacer(modifier = Modifier.height(20.dp))
         }
 
     }
@@ -155,5 +122,12 @@ fun Login(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    Login({ }, AuthType.register, mutableStateOf(""), mutableStateOf(""))
+    Login(
+        { },
+        AuthType.register,
+        mutableStateOf("asdasdsad"),
+        mutableStateOf(""),
+        mutableStateOf(null),
+        mutableStateOf(null)
+    )
 }
