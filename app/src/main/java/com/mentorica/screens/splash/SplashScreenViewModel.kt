@@ -14,6 +14,6 @@ class SplashScreenViewModel @Inject constructor(
 ): ViewModel(), Navigator by navigator {
 
     fun navigate(){
-        navigator.navigateTo(NavTarget.LoginScreen(AuthType.Register))
+        navigator.navigateTo(NavTarget.LoginScreen(AuthType.register))
     }
 }
