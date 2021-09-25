@@ -28,13 +28,16 @@ import com.mentorica.ui.theme.poppins
 
 @Composable
 fun LoginScreen(authType: AuthType, viewModel: LoginViewModel = hiltViewModel()) {
+
+    viewModel.authType = authType
+
     Login(
         authenticate = viewModel::authenticate,
         authType = authType,
         emailState = viewModel.email,
         passwordState = viewModel.password,
         loginErrorState = viewModel.loginError,
-        passwordErrorState = viewModel.passwordError
+        passwordErrorState = viewModel.passwordError,
     )
 }
 
@@ -128,6 +131,6 @@ fun DefaultPreview() {
         mutableStateOf("asdasdsad"),
         mutableStateOf(""),
         mutableStateOf(null),
-        mutableStateOf(null)
+        mutableStateOf(null),
     )
 }
