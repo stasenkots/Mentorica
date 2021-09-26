@@ -1,6 +1,7 @@
-package com.mentorica.ui.get_started
+package com.mentorica.screens.get_started
 
 import androidx.lifecycle.ViewModel
+import com.mentorica.models.AuthType
 import com.mentorica.nav.NavTarget
 import com.mentorica.nav.Navigator
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,10 +13,10 @@ class GetStartedViewModel @Inject constructor(
 ): ViewModel(), Navigator by navigator {
 
     fun login() {
-        navigator.navigateTo(NavTarget.LoginScreen(NavTarget.LoginScreen.Login))
+        navigator.navigateTo(NavTarget.LoginScreen(AuthType.login))
     }
 
     fun register(){
-        navigator.navigateTo(NavTarget.LoginScreen(NavTarget.LoginScreen.Register))
+        navigator.navigateTo(NavTarget.LoginScreen(AuthType.register))
     }
 }

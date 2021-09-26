@@ -1,6 +1,5 @@
 package com.mentorica.ui.components
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
@@ -21,7 +20,7 @@ import com.mentorica.ui.theme.Blue
 @Composable
 fun MButton(
     onClick: () -> Unit,
-    @StringRes stringId: Int,
+    text: String,
     modifier: Modifier = Modifier
 ) {
     Button(
@@ -34,8 +33,8 @@ fun MButton(
         onClick = onClick
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 70.dp, vertical = 7.dp),
-            text = stringResource(stringId),
+            modifier = Modifier.padding(vertical = 7.dp),
+            text = text,
             fontSize = 17.sp,
             fontWeight = FontWeight.Bold
         )
@@ -47,6 +46,6 @@ fun MButton(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MButton(onClick = { }, stringId = R.string.app_name)
+    MButton(onClick = { }, text = stringResource(R.string.app_name))
 }
 

@@ -7,4 +7,10 @@
     <string name="yourself"> yourself.</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="hey_there">Hey there,</string>
+    <string name="join_community">Join community!</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="pass_error_1">Password length must be more than 8</string>
+    <string name="login_error_1">Email address isn\'t valid</string>
 </resources>

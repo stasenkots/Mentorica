@@ -5,11 +5,16 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.mentorica.ui.get_started.GetStartedScreen
-import com.mentorica.ui.splash.SplashScreen
+import com.mentorica.models.AuthType
+import com.mentorica.screens.get_started.GetStartedScreen
+import com.mentorica.screens.login.Login
+import com.mentorica.screens.login.LoginScreen
+import com.mentorica.screens.splash.SplashScreen
 import com.mentorica.utils.NAVIGATION
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 
 @Composable
 fun NavigationComponent(
@@ -27,6 +32,11 @@ fun NavigationComponent(
         composable(NavTarget.GetStartedScreen.label) {
             GetStartedScreen()
         }
+        composable(NavTarget.LoginScreen().label) { backStackEntry->
+            val authType =
+                AuthType.valueOf(backStackEntry.arguments?.getString(LOGIN_TYPE).orEmpty())
+            LoginScreen(authType = authType)
+        }
     }
 }
 
@@ -36,8 +46,9 @@ fun NavigationListener(
     navController: NavHostController,
 ) {
     LaunchedEffect(NAVIGATION) {
-        navigator.events.onEach { target ->
-            if (target is NavTarget.Main) {
+        navigator.events.onEach { target->
+            Timber.d("Navigate to ${target.label}")
+            if(target is NavTarget.Main) {
                 navController.navigate(target.label, target.navOptionsBuilder)
             } else {
                 navController.navigate(target.label)

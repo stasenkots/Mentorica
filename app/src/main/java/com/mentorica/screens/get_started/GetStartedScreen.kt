@@ -1,4 +1,4 @@
-package com.mentorica.ui.get_started
+package com.mentorica.screens.get_started
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -22,6 +22,7 @@ import com.mentorica.R
 import com.mentorica.ui.components.MButton
 import com.mentorica.ui.theme.DarkBlue
 import com.mentorica.ui.theme.Orange
+import com.mentorica.ui.theme.poppinsBold
 
 @Composable
 fun GetStartedScreen(viewModel: GetStartedViewModel = hiltViewModel()) {
@@ -70,16 +71,15 @@ fun GetStarted(
                 top = 20.dp
             ),
             text = content,
-            fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
             textAlign = TextAlign.Center,
             color = DarkBlue,
-            letterSpacing = 1.sp
+            fontFamily = poppinsBold,
         )
 
-        MButton(onClick = onLoginClicked, stringId = R.string.login)
+        MButton(onClick = onLoginClicked, text = stringResource(R.string.login))
         Spacer(modifier = Modifier.height(10.dp))
-        MButton(onClick = onRegisterClicked, stringId = R.string.register)
+        MButton(onClick = onRegisterClicked, text = stringResource(R.string.register))
 
         Spacer(modifier = Modifier.height(100.dp))
 
