@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(
-    private val navigator: Navigator,
+    navigator: Navigator,
     private val userRepository: UserRepository
 ): ViewModel(), Navigator by navigator {
 
@@ -21,9 +21,9 @@ class SplashScreenViewModel @Inject constructor(
 
     fun checkIsUserLoggedIn() {
         if (userRepository.isUserLoggedIn()) {
-            navigator.navigateTo(NavTarget.Main)
+            navigateTo(NavTarget.Main)
         } else {
-            navigator.navigateTo(NavTarget.GetStartedScreen)
+            navigateTo(NavTarget.GetStartedScreen)
         }
     }
 }

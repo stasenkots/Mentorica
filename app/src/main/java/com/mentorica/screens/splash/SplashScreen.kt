@@ -20,8 +20,14 @@ import com.mentorica.R
 import com.mentorica.ui.theme.Blue
 import com.mentorica.ui.theme.White
 
+
 @Composable
-fun SplashScreen(viewModel: SplashScreenViewModel = hiltViewModel()) {
+fun SplashScreen(viewModel: SplashScreenViewModel = hiltViewModel()){
+    Splash()
+}
+
+@Composable
+fun Splash() {
     Surface(
         color = Blue,
     ) {
@@ -41,7 +47,7 @@ fun SplashScreen(viewModel: SplashScreenViewModel = hiltViewModel()) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 12.dp),
-                text = AnnotatedString(stringResource(R.string.app_name)),
+                text = stringResource(R.string.app_name),
                 fontWeight = FontWeight.Bold,
                 fontSize = 32.sp,
                 textAlign = TextAlign.Center,
@@ -64,5 +70,5 @@ fun SplashScreen(viewModel: SplashScreenViewModel = hiltViewModel()) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    SplashScreen()
+    Splash()
 }
