@@ -50,4 +50,21 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
             links = links,
         )
     }
+
+    fun userInitiation() {
+        setCurrentUser(
+            photo = ParseUser.getCurrentUser()[UserLogin.photo] as String,
+            name = ParseUser.getCurrentUser()[UserLogin.name] as String,
+            surname = ParseUser.getCurrentUser()[UserLogin.surname] as String,
+            description = ParseUser.getCurrentUser()[UserLogin.description] as String,
+            position = ParseUser.getCurrentUser()[UserLogin.position] as String,
+            company = ParseUser.getCurrentUser()[UserLogin.company] as String,
+            isMentor = ParseUser.getCurrentUser()[UserLogin.isMentor] as Boolean,
+            payment = ParseUser.getCurrentUser()[UserLogin.payment] as Double,
+            technologies = ParseUser.getCurrentUser()[UserLogin.technologies] as Array<String>,
+            workExperience = ParseUser.getCurrentUser()[UserLogin.workExperience] as Array<WorkExperience>,
+            education = ParseUser.getCurrentUser()[UserLogin.education] as Array<String>,
+            links = ParseUser.getCurrentUser()[UserLogin.links] as Array<String>,
+        )
+    }
 }
