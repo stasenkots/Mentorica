@@ -51,20 +51,21 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
         )
     }
 
-    fun userInitiation() {
+    fun initCurrentUser() {
+        val user = ParseUser.getCurrentUser()
         setCurrentUser(
-            photo = ParseUser.getCurrentUser()[UserLogin.photo] as String,
-            name = ParseUser.getCurrentUser()[UserLogin.name] as String,
-            surname = ParseUser.getCurrentUser()[UserLogin.surname] as String,
-            description = ParseUser.getCurrentUser()[UserLogin.description] as String,
-            position = ParseUser.getCurrentUser()[UserLogin.position] as String,
-            company = ParseUser.getCurrentUser()[UserLogin.company] as String,
-            isMentor = ParseUser.getCurrentUser()[UserLogin.isMentor] as Boolean,
-            payment = ParseUser.getCurrentUser()[UserLogin.payment] as Double,
-            technologies = ParseUser.getCurrentUser()[UserLogin.technologies] as Array<String>,
-            workExperience = ParseUser.getCurrentUser()[UserLogin.workExperience] as Array<WorkExperience>,
-            education = ParseUser.getCurrentUser()[UserLogin.education] as Array<String>,
-            links = ParseUser.getCurrentUser()[UserLogin.links] as Array<String>,
+            photo = user[UserLogin.photo] as String,
+            name = user[UserLogin.name] as String,
+            surname = user[UserLogin.surname] as String,
+            description = user[UserLogin.description] as String,
+            position = user[UserLogin.position] as String,
+            company = user[UserLogin.company] as String,
+            isMentor = user[UserLogin.isMentor] as Boolean,
+            payment = user[UserLogin.payment] as Double,
+            technologies = user[UserLogin.technologies] as Array<String>,
+            workExperience = user[UserLogin.workExperience] as Array<WorkExperience>,
+            education = user[UserLogin.education] as Array<String>,
+            links = user[UserLogin.links] as Array<String>,
         )
     }
 }

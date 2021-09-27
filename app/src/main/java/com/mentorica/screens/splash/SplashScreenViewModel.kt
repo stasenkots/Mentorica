@@ -14,12 +14,12 @@ class SplashScreenViewModel @Inject constructor(
 ): ViewModel(), Navigator by navigator {
 
     init {
-        userRepository.userInitiation()
         checkIsUserLoggedIn()
     }
 
     private fun checkIsUserLoggedIn() {
         if (userRepository.isUserLoggedIn()) {
+            userRepository.initCurrentUser()
             navigateTo(NavTarget.Main)
         } else {
             navigateTo(NavTarget.GetStartedScreen)
