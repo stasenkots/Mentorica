@@ -14,4 +14,6 @@ object Versions {
     const val appCompat = "1.3.1"
     const val activityCompose = "1.3.1"
     const val material = "1.4.0"
+    const val coil = "1.3.2"
+    const val coilLandscapist = "1.3.6"
 }
