@@ -58,6 +58,10 @@ android {
 
 dependencies {
 
+    //Coil
+    implementation(Deps.coil)
+    implementation(Deps.coilLandscapist)
+
     //Parse SDK
     implementation(Deps.parseSdk)
     implementation(Deps.parseSdkKtx)

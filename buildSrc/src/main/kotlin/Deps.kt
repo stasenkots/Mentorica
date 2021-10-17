@@ -1,5 +1,9 @@
 object Deps {
 
+    //Coil
+    const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
+    const val coilLandscapist = "com.github.skydoves:landscapist-coil:${Versions.coilLandscapist}"
+
     //Parse SDK
     const val parseSdk = "com.github.parse-community.Parse-SDK-Android:parse:${Versions.parseSdk}"
     const val parseSdkKtx = "com.github.parse-community.Parse-SDK-Android:ktx:${Versions.parseSdk}"
