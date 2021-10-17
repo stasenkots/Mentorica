@@ -1,4 +1,4 @@
-package com.mentorica.ui.components
+package com.mentorica.ui.components.text
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text

@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
 import com.mentorica.models.AuthType
-import com.mentorica.ui.components.IconText
-import com.mentorica.ui.components.MButton
-import com.mentorica.ui.components.PasswordText
+import com.mentorica.ui.components.text.IconText
+import com.mentorica.ui.components.button.MButton
+import com.mentorica.ui.components.text.PasswordText
 import com.mentorica.ui.theme.poppins
 
 @Composable

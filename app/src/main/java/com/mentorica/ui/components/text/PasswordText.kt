@@ -1,7 +1,5 @@
-package com.mentorica.ui.components
+package com.mentorica.ui.components.text
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*

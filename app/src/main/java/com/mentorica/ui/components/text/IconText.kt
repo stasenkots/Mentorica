@@ -1,4 +1,4 @@
-package com.mentorica.ui.components
+package com.mentorica.ui.components.text
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -13,12 +13,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.*
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import com.mentorica.R
 import com.mentorica.ui.theme.Blue
-import java.lang.Error
 
 @Composable
 fun IconText(
