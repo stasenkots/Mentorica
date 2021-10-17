@@ -10,7 +10,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.text.withStyle
@@ -19,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
-import com.mentorica.ui.components.MButton
+import com.mentorica.ui.components.button.MButton
 import com.mentorica.ui.theme.DarkBlue
 import com.mentorica.ui.theme.Orange
 import com.mentorica.ui.theme.poppinsBold

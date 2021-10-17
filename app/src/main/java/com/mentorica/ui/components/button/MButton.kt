@@ -1,4 +1,4 @@
-package com.mentorica.ui.components
+package com.mentorica.ui.components.button
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
