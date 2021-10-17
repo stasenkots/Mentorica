@@ -23,7 +23,9 @@ import com.mentorica.ui.theme.poppins
 
 @Composable
 fun LoginScreen(authType: AuthType, viewModel: LoginViewModel = hiltViewModel()) {
+
     viewModel.authType = authType
+
     Login(
         authenticate = viewModel::authenticate,
         authType = authType,
