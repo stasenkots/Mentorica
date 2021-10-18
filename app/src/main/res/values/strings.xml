@@ -13,4 +13,5 @@
     <string name="email">Email</string>
     <string name="pass_error_1">Password length must be more than 8</string>
     <string name="login_error_1">Email address isn\'t valid</string>
+    <string name="failed_to_load_image">Fail to load image!</string>
 </resources>
