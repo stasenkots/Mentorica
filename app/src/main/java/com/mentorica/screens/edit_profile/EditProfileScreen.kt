@@ -49,8 +49,6 @@ fun EditScreen(
 ) {
     val scrollState = rememberScrollState()
 
-    val photo by remember { userState.photo }
-
     Column(
         modifier = Modifier
             .background(Blue)
@@ -59,113 +57,132 @@ fun EditScreen(
                 orientation = Orientation.Vertical,
             ),
     ) {
+        EditProfileTopBar(
+            photoState = userState.photo
+        )
+        EditProfileBody(
+            userState = userState,
+            editErrorState = editErrorState
+        )
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth(),
+    }
+}
 
-            ) {
-            Spacer(Modifier.height(20.dp))
-            Text(
-                modifier = Modifier.align(Alignment.CenterHorizontally),
-                text = stringResource(R.string.profile),
-                color = Color.White,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-            )
+@Composable
+fun EditProfileTopBar(
+    photoState: MutableState<String>,
+) {
+    val photo by remember { photoState }
 
-            Spacer(Modifier.height(20.dp))
-            Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth(),
 
-                CoilImage(
-                    imageModel = photo,
-                    modifier = Modifier
-                        .border(0.dp, Color.Black, CircleShape)
-                        .width(140.dp)
-                        .height(140.dp),
-                    shimmerParams = ShimmerParams(
-                        baseColor = MaterialTheme.colors.background,
-                        highlightColor = Color.White,
-                        durationMillis = 350,
-                        dropOff = 0.65f,
-                        tilt = 20f,
-                    ),
-                    failure = {
-                        Text(text = stringResource(R.string.failed_to_load_image))
-                    },
-                )
-                Image(
-                    painter = painterResource(R.drawable.edit),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .height(40.dp)
-                        .width(40.dp)
-                        .align(Alignment.BottomEnd),
-                )
-            }
-            Spacer(modifier = Modifier.height(20.dp))
-
-        }
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .clip(RoundedCornerShape(8))
-                .background(Color.White)
-                .padding(
-                    top = edit_screen_vertical,
-                    start = edit_screen_horizontal,
-                    end = edit_screen_end,
-                ),
         ) {
-            Spacer(Modifier.height(30.dp))
+        Spacer(Modifier.height(20.dp))
+        Text(
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            text = stringResource(R.string.profile),
+            color = Color.White,
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 20.sp,
+        )
 
-            val textModifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    vertical = edit_screen_vertical,
-                    horizontal = edit_screen_horizontal,
-                )
+        Spacer(Modifier.height(20.dp))
+        Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
 
-            MTextField(
-                textState = userState.name,
-                hint = R.string.name,
-                errorState = editErrorState.name,
-                modifier = textModifier,
+            CoilImage(
+                imageModel = photo,
+                modifier = Modifier
+                    .border(0.dp, Color.Black, CircleShape)
+                    .width(140.dp)
+                    .height(140.dp),
+                shimmerParams = ShimmerParams(
+                    baseColor = MaterialTheme.colors.background,
+                    highlightColor = Color.White,
+                    durationMillis = 350,
+                    dropOff = 0.65f,
+                    tilt = 20f,
+                ),
+                failure = {
+                    Text(text = stringResource(R.string.failed_to_load_image))
+                },
             )
-
-            MTextField(
-                textState = userState.surname,
-                hint = R.string.surname,
-                errorState = editErrorState.surname,
-                modifier = textModifier,
+            Image(
+                painter = painterResource(R.drawable.edit),
+                contentDescription = "",
+                modifier = Modifier
+                    .height(40.dp)
+                    .width(40.dp)
+                    .align(Alignment.BottomEnd),
             )
-
-            MTextField(
-                textState = userState.description,
-                hint = R.string.description,
-                errorState = editErrorState.description,
-                modifier = textModifier,
-            )
-
-            MTextField(
-                textState = userState.position,
-                hint = R.string.position,
-                errorState = editErrorState.position,
-                modifier = textModifier,
-            )
-
-            MTextField(
-                textState = userState.company,
-                hint = R.string.company,
-                errorState = editErrorState.company,
-                modifier = textModifier,
-            )
-
-
-
         }
+        Spacer(modifier = Modifier.height(20.dp))
+
+    }
+}
+
+@Composable
+fun EditProfileBody(
+    userState: UserState,
+    editErrorState: EditErrorState,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .clip(RoundedCornerShape(8))
+            .background(Color.White)
+            .padding(
+                top = edit_screen_vertical,
+                start = edit_screen_horizontal,
+                end = edit_screen_end,
+            ),
+    ) {
+        Spacer(Modifier.height(30.dp))
+
+        val textModifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                vertical = edit_screen_vertical,
+                horizontal = edit_screen_horizontal,
+            )
+
+        MTextField(
+            textState = userState.name,
+            hint = R.string.name,
+            errorState = editErrorState.name,
+            modifier = textModifier,
+        )
+
+        MTextField(
+            textState = userState.surname,
+            hint = R.string.surname,
+            errorState = editErrorState.surname,
+            modifier = textModifier,
+        )
+
+        MTextField(
+            textState = userState.description,
+            hint = R.string.description,
+            errorState = editErrorState.description,
+            modifier = textModifier,
+        )
+
+        MTextField(
+            textState = userState.position,
+            hint = R.string.position,
+            errorState = editErrorState.position,
+            modifier = textModifier,
+        )
+
+        MTextField(
+            textState = userState.company,
+            hint = R.string.company,
+            errorState = editErrorState.company,
+            modifier = textModifier,
+        )
+
     }
 }
 
