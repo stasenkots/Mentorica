@@ -13,4 +13,11 @@
     <string name="email">Email</string>
     <string name="pass_error_1">Password length must be more than 8</string>
     <string name="login_error_1">Email address isn\'t valid</string>
+    <string name="failed_to_load_image">failed to load image</string>
+    <string name="profile">Profile</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="description">Description</string>
+    <string name="position">Position</string>
+    <string name="company">Company</string>
 </resources>

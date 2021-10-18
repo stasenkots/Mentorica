@@ -3,6 +3,7 @@ package com.mentorica.screens.edit_profile
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mentorica.models.UserState
 import com.mentorica.models.WorkExperience
 import com.mentorica.models.currentUser
 import com.mentorica.nav.NavTarget
@@ -16,37 +17,41 @@ import javax.inject.Inject
 @HiltViewModel
 class EditProfileViewModel @Inject constructor(
     private val userRepository: UserRepository,
-    navigator: Navigator
+    navigator: Navigator,
 ): ViewModel(), Navigator by navigator {
 
-    val name = mutableStateOf(currentUser.name)
-    val surname = mutableStateOf(currentUser.surname)
-    val photo = mutableStateOf(currentUser.photo)
-    val position = mutableStateOf(currentUser.position)
-    val description = mutableStateOf(currentUser.description)
-    val company = mutableStateOf(currentUser.company)
-    val isMentor = mutableStateOf(currentUser.isMentor)
-    val payment = mutableStateOf(currentUser.payment)
-    val technologies = mutableStateOf(currentUser.technologies)
-    val education = mutableStateOf(currentUser.education)
-    val links = mutableStateOf(currentUser.links)
-    val workExperience = mutableStateOf(currentUser.workExperience)
+    val user = UserState(
+        name = currentUser.name,
+        surname = currentUser.surname,
+        photo = currentUser.photo,
+        position = currentUser.position,
+        description = currentUser.description,
+        company = currentUser.company,
+        isMentor = currentUser.isMentor,
+        payment = currentUser.payment,
+        technologies = currentUser.technologies,
+        education = currentUser.education,
+        links = currentUser.links,
+        workExperience = currentUser.workExperience,
+    )
+
+    val editErrorState = EditErrorState()
 
     fun saveUserData() {
         viewModelScope.launchIO {
             userRepository.saveUserData(
-                name = name.value,
-                surname = surname.value,
-                photo = photo.value,
-                position = position.value,
-                description = description.value,
-                company = company.value,
-                isMentor = isMentor.value,
-                payment = payment.value,
-                technologies = technologies.value,
-                education = education.value,
-                links = links.value,
-                workExperience = workExperience.value,
+                name = user.name.value,
+                surname = user.surname.value,
+                photo = user.photo.value,
+                position = user.position.value,
+                description = user.description.value,
+                company = user.company.value,
+                isMentor = user.isMentor.value,
+                payment = user.payment.value,
+                technologies = user.technologies.value,
+                education = user.education.value,
+                links = user.links.value,
+                workExperience = user.workExperience.value,
             )
 
             navigateTo(NavTarget.Main)
