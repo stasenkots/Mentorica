@@ -12,6 +12,7 @@
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="invalid_email_address_error">Email address isn\'t valid</string>
+    <string name="an_error_occurred_while_login">An Error occurred while login</string>
     <string name="failed_to_load_image">Fail to load image!</string>
     <string name="user_status">%1s in %2s</string>
     <string name="user_payment">%1sp/h</string>

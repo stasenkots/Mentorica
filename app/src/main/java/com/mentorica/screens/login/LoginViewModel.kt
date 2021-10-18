@@ -48,6 +48,8 @@ class LoginViewModel @Inject constructor(
             launchUI {
                 if (userRepository.currentUser != null) {
                     navigator.navigateTo(EditScreen)
+                } else {
+                    loginError.value = R.string.an_error_occurred_while_login
                 }
             }
         }
