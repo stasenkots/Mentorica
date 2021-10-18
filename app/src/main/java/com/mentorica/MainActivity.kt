@@ -17,7 +17,6 @@ import com.mentorica.nav.NavigationComponent
 import com.mentorica.ui.theme.MentoricaTheme
 import com.mentorica.utils.GlobalStates.errorBus
 import com.mentorica.utils.RC_SIGN_IN
-import com.parse.google.ParseGoogleUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
