@@ -61,7 +61,7 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
             position = user[UserLogin.position] as String,
             company = user[UserLogin.company] as String,
             isMentor = user[UserLogin.isMentor] as Boolean,
-            payment = user[UserLogin.payment] as Double,
+            payment = user[UserLogin.payment] as Double?,
             technologies = user[UserLogin.technologies] as Array<String>,
             workExperience = user[UserLogin.workExperience] as Array<WorkExperience>,
             education = user[UserLogin.education] as Array<String>,
