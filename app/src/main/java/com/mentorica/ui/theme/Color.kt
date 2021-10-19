@@ -1,6 +1,7 @@
 @file:Suppress("MagicNumber")
 
 package com.mentorica.ui.theme
+
 import androidx.compose.ui.graphics.Color
 
 val Purple200 = Color(0xFFBB86FC)
@@ -13,3 +14,4 @@ val Orange = Color(0XFFFC9D45)
 val BlueOpacity = Color(0x666EB5DA)
 val DarkBlueText = Color(0xFF120E21)
 val BlueOpacityDark = Color(0x800E82C0)
+val Grey = Color(0xFF918F8F)
