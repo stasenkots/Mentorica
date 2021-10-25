@@ -17,10 +17,12 @@ import com.mentorica.ui.theme.BlueOpacity
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.mentorica.R
+import com.mentorica.ui.theme.BlueOpacityDark
 import com.mentorica.ui.theme.DarkBlueText
 
 @ExperimentalMaterialApi
@@ -82,8 +84,20 @@ fun MentorItem(user: User, onClick: () -> Unit, addToFavorites: () -> Unit) {
                     fontSize = 16.sp,
                 )
             }
-            Column() {
-
+            Spacer(modifier = Modifier.width(32.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .align(Alignment.CenterVertically)
+            ) {
+                IconButton(modifier = Modifier.size(64.dp),
+                    onClick = { }) {
+                    Icon(modifier = Modifier.size(64.dp),
+                        painter = painterResource(id = R.drawable.ic_baseline_favorite_border_24),
+                        contentDescription = "contentDescription",
+                        tint = BlueOpacityDark)
+                }
             }
         }
     }
