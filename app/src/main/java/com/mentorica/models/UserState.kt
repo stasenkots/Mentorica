@@ -10,7 +10,7 @@ class UserState(
     description: String = "",
     company: String = "",
     isMentor: Boolean = false,
-    payment: Double? = null,
+    payment: String = "",
     technologies: List<String> = emptyList(),
     education: List<String> = emptyList(),
     links: List<String> = emptyList(),
@@ -23,9 +23,9 @@ class UserState(
     val description = mutableStateOf(description)
     val company = mutableStateOf(company)
     val isMentor = mutableStateOf(isMentor)
-    val payment = mutableStateOf<Double?>(payment)
-    val technologies = mutableStateOf<List<String>>(technologies)
-    val education = mutableStateOf<List<String>>(education)
-    val links = mutableStateOf<List<String>>(links)
-    val workExperience = mutableStateOf<List<WorkExperience>>(workExperience)
+    val payment = mutableStateOf(payment)
+    val technologies = mutableStateOf(technologies)
+    val education = mutableStateOf(education)
+    val links = mutableStateOf(links)
+    val workExperience = mutableStateOf(workExperience)
 }

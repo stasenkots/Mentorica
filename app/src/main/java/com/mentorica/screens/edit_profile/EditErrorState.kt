@@ -8,4 +8,5 @@ class EditErrorState {
     val description = mutableStateOf<Int?>(null)
     val position = mutableStateOf<Int?>(null)
     val company = mutableStateOf<Int?>(null)
+    val payment = mutableStateOf<Int?>(null)
 }

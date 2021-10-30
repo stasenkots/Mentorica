@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -22,11 +23,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
+import com.mentorica.models.Payment
 import com.mentorica.models.UserState
 import com.mentorica.ui.components.text.CheckBoxTextField
 import com.mentorica.ui.components.text.MTextField
@@ -60,11 +64,11 @@ fun EditScreen(
             ),
     ) {
         EditProfileTopBar(
-            photoState = userState.photo
+            photoState = userState.photo,
         )
         EditProfileBody(
             userState = userState,
-            editErrorState = editErrorState
+            editErrorState = editErrorState,
         )
 
     }
@@ -189,8 +193,20 @@ fun EditProfileBody(
             modifier = textModifier
                 .padding(vertical = edit_screen_vertical),
             text = R.string.mentor,
-            checkedState = userState.isMentor
+            checkedState = userState.isMentor,
         )
+
+        if(userState.isMentor.value) {
+            MTextField(
+                textState = userState.payment,
+                hint = R.string.payment,
+                errorState = editErrorState.payment,
+                modifier = textModifier,
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                ),
+            )
+        }
     }
 }
 

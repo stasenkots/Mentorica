@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -19,7 +20,8 @@ fun MTextField(
     textState: MutableState<String>,
     @StringRes hint: Int,
     errorState: MutableState<Int?>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
 ) {
     var text by remember { textState }
     var error by remember { errorState }
@@ -29,7 +31,8 @@ fun MTextField(
         value = text,
         onValueChange = {
             text = it
-            error = null },
+            error = null
+        },
         label = { Text(text = stringResource(hint)) },
         shape = CircleShape,
         colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -37,6 +40,7 @@ fun MTextField(
             focusedLabelColor = Blue,
         ),
         isError = error != null,
+        keyboardOptions = keyboardOptions
     )
     if(error != null) {
         val id = checkNotNull(error)
