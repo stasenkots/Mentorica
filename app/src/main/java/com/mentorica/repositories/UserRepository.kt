@@ -21,7 +21,7 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
         description: String,
         company: String,
         isMentor: Boolean,
-        payment: Double?,
+        payment: Payment,
         technologies: List<String>,
         workExperience: List<WorkExperience>,
         education: List<String>,

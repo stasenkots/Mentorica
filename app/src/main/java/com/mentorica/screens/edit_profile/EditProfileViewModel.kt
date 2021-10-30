@@ -3,6 +3,8 @@ package com.mentorica.screens.edit_profile
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mentorica.R
+import com.mentorica.models.Payment
 import com.mentorica.models.UserState
 import com.mentorica.models.WorkExperience
 import com.mentorica.models.currentUser
@@ -12,6 +14,7 @@ import com.mentorica.repositories.UserRepository
 import com.mentorica.services.UserLogin
 import com.mentorica.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,7 +31,7 @@ class EditProfileViewModel @Inject constructor(
         description = currentUser.description,
         company = currentUser.company,
         isMentor = currentUser.isMentor,
-        payment = currentUser.payment,
+        payment = currentUser.payment.toString(),
         technologies = currentUser.technologies,
         education = currentUser.education,
         links = currentUser.links,
@@ -38,6 +41,7 @@ class EditProfileViewModel @Inject constructor(
     val editErrorState = EditErrorState()
 
     fun saveUserData() {
+        if(!validFields()) return
         viewModelScope.launchIO {
             userRepository.saveUserData(
                 name = user.name.value,
@@ -47,7 +51,7 @@ class EditProfileViewModel @Inject constructor(
                 description = user.description.value,
                 company = user.company.value,
                 isMentor = user.isMentor.value,
-                payment = user.payment.value,
+                payment = Payment(user.payment.value.toDouble()),
                 technologies = user.technologies.value,
                 education = user.education.value,
                 links = user.links.value,
@@ -56,5 +60,39 @@ class EditProfileViewModel @Inject constructor(
 
             navigateTo(NavTarget.Main)
         }
+    }
+
+    private fun validFields(): Boolean {
+        if(user.name.value.isBlank()) {
+            editErrorState.name.value = R.string.cannot_be_empty
+            return false
+        }
+
+        if(user.surname.value.isBlank()) {
+            editErrorState.surname.value = R.string.cannot_be_empty
+            return false
+        }
+
+        if(user.position.value.isBlank()) {
+            editErrorState.position.value = R.string.cannot_be_empty
+            return false
+        }
+
+        if(user.description.value.isBlank()) {
+            editErrorState.description.value = R.string.cannot_be_empty
+            return false
+        }
+
+        if(user.company.value.isBlank()) {
+            editErrorState.company.value = R.string.cannot_be_empty
+            return false
+        }
+
+        if(user.payment.value.toDoubleOrNull() == null) {
+            editErrorState.payment.value = R.string.invalid_input
+            return false
+        }
+
+        return true
     }
 }

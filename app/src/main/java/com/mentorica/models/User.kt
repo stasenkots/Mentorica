@@ -9,7 +9,7 @@ data class User(
     val position: String,
     val company: String,
     val isMentor: Boolean,
-    val payment: Double?,
+    val payment: Payment,
     val technologies: List<String>,
     val workExperience: List<Experience>,
     val education: List<Experience>,
