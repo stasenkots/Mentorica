@@ -84,6 +84,7 @@ dependencies {
     implementation(Deps.timber)
 
     // Ui
+    implementation(Deps.binding)
     implementation(Deps.coreKtx)
     implementation(Deps.appcompat)
     implementation(Deps.material)
