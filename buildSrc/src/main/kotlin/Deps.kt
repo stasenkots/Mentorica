@@ -35,6 +35,7 @@ object Deps {
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
     // Ui
+    const val binding = "androidx.compose.ui:ui-viewbinding:${Versions.compose}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.core}"
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chip"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chip_background"
+    android:textAlignment="center"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="10dp"
+    android:textColor="@color/white"
+    android:fontFamily="@font/poppins"
+    app:layout_constraintBottom_toBottomOf="@id/image"
+    app:layout_constraintEnd_toEndOf="@id/image"
+    app:layout_constraintStart_toStartOf="@id/image"
+    app:layout_constraintTop_toTopOf="@id/image"
+    tools:text="chip"
+
+    />
+
