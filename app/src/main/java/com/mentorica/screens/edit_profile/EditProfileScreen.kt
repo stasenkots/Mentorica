@@ -207,6 +207,13 @@ fun EditProfileBody(
                 ),
             )
         }
+
+        SkillPanel(
+            modifier = Modifier.padding(
+                horizontal = edit_screen_horizontal,
+            ),
+            skillsState = userState.technologies,
+        )
     }
 }
 
@@ -216,7 +223,7 @@ fun EditProfileBody(
 fun DefaultPreview() {
     EditScreen(
         { },
-        UserState(),
+        UserState(technologies = listOf("asdqsd", "asdsd", "adsdasd")),
         EditErrorState(),
     )
 }
