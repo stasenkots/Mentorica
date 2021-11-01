@@ -11,8 +11,8 @@ data class User(
     val isMentor: Boolean,
     val payment: Payment,
     val technologies: List<String>,
-    val workExperience: List<WorkExperience>,
-    val education: List<String>,
+    val workExperience: List<Experience>,
+    val education: List<Experience>,
     val links: List<String>,
 )
 
@@ -27,8 +27,8 @@ fun setCurrentUser(
     isMentor: Boolean,
     payment: Payment,
     technologies: List<String>,
-    workExperience: List<WorkExperience>,
-    education: List<String>,
+    workExperience: List<Experience>,
+    education: List<Experience>,
     links: List<String>,
 ) {
     _currentUser = User(

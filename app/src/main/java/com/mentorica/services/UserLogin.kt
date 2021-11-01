@@ -13,7 +13,7 @@ object UserLogin {
     const val isMentor = "isMentor"
     const val payment = "payment"
     const val technologies = "technologies"
-    const val workExperience = "workExperience"
+    const val workExperience = "experience"
     const val education = "education"
     const val links = "links"
 

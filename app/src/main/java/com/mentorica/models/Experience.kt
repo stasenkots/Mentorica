@@ -1,9 +1,11 @@
 package com.mentorica.models
 
+import java.text.FieldPosition
 import java.time.LocalDate
 
-data class WorkExperience(
+data class Experience(
+    val companyName: String,
     val from: LocalDate,
     val to: LocalDate,
-    val companyName: String,
+    val position: String
 )

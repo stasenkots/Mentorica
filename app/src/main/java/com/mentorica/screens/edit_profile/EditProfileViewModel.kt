@@ -1,20 +1,16 @@
 package com.mentorica.screens.edit_profile
 
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mentorica.R
 import com.mentorica.models.Payment
 import com.mentorica.models.UserState
-import com.mentorica.models.WorkExperience
 import com.mentorica.models.currentUser
 import com.mentorica.nav.NavTarget
 import com.mentorica.nav.Navigator
 import com.mentorica.repositories.UserRepository
-import com.mentorica.services.UserLogin
 import com.mentorica.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
