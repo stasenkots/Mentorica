@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.sp
 import com.mentorica.models.AuthType
 import com.mentorica.screens.login.Login
 import com.mentorica.R
-import com.mentorica.ui.theme.Grey
 import com.mentorica.ui.theme.edit_screen_horizontal
 import com.mentorica.ui.theme.edit_screen_vertical
 
@@ -39,7 +38,7 @@ fun CheckBoxTextField(
         modifier
             .border(
                 width = 1.dp,
-                color = Grey,
+                color = Color.Gray,
                 shape = CircleShape
             ),
     ) {

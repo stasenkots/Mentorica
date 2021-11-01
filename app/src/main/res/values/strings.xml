@@ -28,4 +28,5 @@
     <string name="payment">Payment(in p/h)</string>
     <string name="invalid_input">Invalid input</string>
     <string name="cannot_be_empty">This field cannot be empty</string>
+    <string name="skills">Skills</string>
 </resources>
