@@ -6,5 +6,5 @@ data class Experience(
     val companyName: String,
     val from: LocalDate,
     val to: LocalDate,
-    val position: String,
+    val position: String
 )

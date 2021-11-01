@@ -12,9 +12,9 @@ class UserState(
     isMentor: Boolean = false,
     payment: String = "",
     technologies: List<String> = emptyList(),
-    education: List<String> = emptyList(),
+    education: List<Experience> = emptyList(),
     links: List<String> = emptyList(),
-    workExperience: List<WorkExperience> = emptyList(),
+    workExperience: List<Experience> = emptyList(),
 ) {
     val name = mutableStateOf(name)
     val surname = mutableStateOf(surname)
