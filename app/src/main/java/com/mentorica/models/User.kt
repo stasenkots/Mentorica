@@ -1,6 +1,7 @@
 package com.mentorica.models
 
 data class User(
+    val id:String,
     val photo: String,
     val name: String,
     val surname: String,
@@ -13,6 +14,7 @@ data class User(
     val workExperience: Array<WorkExperience>,
     val education: Array<String>,
     val links: Array<String>,
+    val favorites:List<String>
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -53,6 +55,7 @@ data class User(
 }
 
 fun setCurrentUser(
+    id:String,
     photo: String,
     name: String,
     surname: String,
@@ -65,8 +68,10 @@ fun setCurrentUser(
     workExperience: Array<WorkExperience>,
     education: Array<String>,
     links: Array<String>,
+    favorites:List<String>
 ) {
     _currentUser = User(
+        id = id,
         photo = photo,
         name = name,
         surname = surname,
@@ -79,6 +84,7 @@ fun setCurrentUser(
         workExperience = workExperience,
         education = education,
         links = links,
+        favorites = favorites
     )
 }
 
