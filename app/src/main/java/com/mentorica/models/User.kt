@@ -1,6 +1,7 @@
 package com.mentorica.models
 
 data class User(
+    val id:String,
     val photo: String,
     val name: String,
     val surname: String,
@@ -13,9 +14,11 @@ data class User(
     val workExperience: List<Experience>,
     val education: List<Experience>,
     val links: List<String>,
-)
+    val favorites:List<String>
+) 
 
 fun setCurrentUser(
+    id:String,
     photo: String,
     name: String,
     surname: String,
@@ -28,8 +31,10 @@ fun setCurrentUser(
     workExperience: List<Experience>,
     education: List<Experience>,
     links: List<String>,
+    favorites:List<String>
 ) {
     _currentUser = User(
+        id = id,
         photo = photo,
         name = name,
         surname = surname,
@@ -42,6 +47,7 @@ fun setCurrentUser(
         workExperience = workExperience,
         education = education,
         links = links,
+        favorites = favorites
     )
 }
 
