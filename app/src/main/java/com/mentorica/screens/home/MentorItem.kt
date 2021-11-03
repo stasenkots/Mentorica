@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -110,6 +109,7 @@ fun MentorItem(
                 val onClickFavorite = {
                     if(isFavorite) removeToFavorites(user.id)
                     else addToFavorites(user.id)
+                    isFavorite = !isFavorite
                 }
                 IconButton(
                     modifier = Modifier.size(64.dp),
