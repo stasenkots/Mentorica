@@ -1,13 +1,11 @@
 package com.mentorica.screens.edit_profile
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -30,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
+import com.mentorica.models.Experience
 import com.mentorica.models.Payment
 import com.mentorica.models.UserState
 import com.mentorica.ui.components.text.CheckBoxTextField
@@ -37,6 +36,7 @@ import com.mentorica.ui.components.text.MTextField
 import com.mentorica.ui.theme.*
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
+import java.time.LocalDate
 
 @Composable
 fun EditProfileScreen(viewModel: EditProfileViewModel = hiltViewModel()) {
@@ -53,15 +53,10 @@ fun EditScreen(
     userState: UserState,
     editErrorState: EditErrorState,
 ) {
-    val scrollState = rememberScrollState()
 
     Column(
         modifier = Modifier
-            .background(Blue)
-            .scrollable(
-                state = scrollState,
-                orientation = Orientation.Vertical,
-            ),
+            .background(Blue),
     ) {
         EditProfileTopBar(
             photoState = userState.photo,
@@ -133,6 +128,9 @@ fun EditProfileBody(
     userState: UserState,
     editErrorState: EditErrorState,
 ) {
+
+    val scrollState = rememberScrollState()
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -143,7 +141,8 @@ fun EditProfileBody(
                 top = edit_screen_vertical,
                 start = edit_screen_horizontal,
                 end = edit_screen_end,
-            ),
+            )
+            .verticalScroll(scrollState)
     ) {
         Spacer(Modifier.height(30.dp))
 
@@ -207,12 +206,32 @@ fun EditProfileBody(
                 ),
             )
         }
-
         SkillPanel(
             modifier = Modifier.padding(
                 horizontal = edit_screen_horizontal,
+                vertical = edit_screen_vertical
+
             ),
             skillsState = userState.technologies,
+        )
+
+        ExperiencePanel(
+            modifier = Modifier.padding(
+                horizontal = edit_screen_horizontal,
+                vertical = edit_screen_vertical
+            ),
+            titleId = R.string.work_experience,
+            experiencesState = userState.workExperience,
+        )
+
+        ExperiencePanel(
+            modifier = Modifier.padding(
+                horizontal = edit_screen_horizontal,
+                vertical = edit_screen_vertical
+
+            ),
+            titleId = R.string.education,
+            experiencesState = userState.education,
         )
     }
 }
@@ -223,7 +242,23 @@ fun EditProfileBody(
 fun DefaultPreview() {
     EditScreen(
         { },
-        UserState(technologies = listOf("asdqsd", "asdsd", "adsdasd")),
+        UserState(
+            technologies = listOf("asdqsd", "asdsd", "adsdasd"),
+            workExperience = listOf(
+                Experience(
+                    "Mentorica",
+                    LocalDate.now(), LocalDate.now(), "Senior dev",
+                ),
+                Experience(
+                    "Facebook",
+                    LocalDate.now(), LocalDate.now(), "Senior dev",
+                ),
+                Experience(
+                    "Yandex",
+                    LocalDate.now(), LocalDate.now(), "Senior dev",
+                ),
+            ),
+        ),
         EditErrorState(),
     )
 }
