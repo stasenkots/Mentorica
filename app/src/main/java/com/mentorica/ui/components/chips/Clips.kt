@@ -9,12 +9,12 @@ import com.mentorica.databinding.ChipBinding
 import com.mentorica.databinding.ChipsBinding
 
 @Composable
-fun Chips(modifier:Modifier = Modifier, skills: List<String>) {
+fun Chips(modifier:Modifier = Modifier, list: List<String>) {
     AndroidViewBinding(
         modifier = modifier,
         factory = ChipsBinding::inflate,
         update = {
-            for(value in skills) {
+            for(value in list) {
                 val chip = ChipBinding.inflate(LayoutInflater.from(root.context))
                 chip.chip.text = value
                 root.addView(chip.chip)
@@ -26,6 +26,6 @@ fun Chips(modifier:Modifier = Modifier, skills: List<String>) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview1() {
-    Chips(skills = listOf("sda", "sdasdasd", "asdasdsad", "adsadsdasd", "asdsadasd", "sadasdsad"))
+    Chips(list = listOf("sda", "sdasdasd", "asdasdsad", "adsadsdasd", "asdsadasd", "sadasdsad"))
 }
 

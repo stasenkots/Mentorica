@@ -25,4 +25,6 @@
     <string name="invalid_input">Invalid input</string>
     <string name="cannot_be_empty">This field cannot be empty</string>
     <string name="skills">Skills</string>
+    <string name="work_experience">Work experience</string>
+    <string name="education">Education</string>
 </resources>
