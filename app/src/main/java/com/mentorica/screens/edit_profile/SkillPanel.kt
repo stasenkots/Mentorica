@@ -1,6 +1,7 @@
 package com.mentorica.screens.edit_profile
 
 import android.annotation.SuppressLint
+import android.view.View
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -16,13 +17,14 @@ import com.mentorica.ui.components.chips.Chips
 fun SkillPanel(
     modifier: Modifier = Modifier,
     skillsState: MutableState<List<String>>,
+    removeSkill: (View) -> Unit,
 ) {
 
     Panel(
         modifier = modifier,
         titleId = R.string.skills,
         itemsState = skillsState,
-    ) { skills ->
+    ) { skills->
         Chips(
             modifier = Modifier.padding(
                 top = 60.dp,
@@ -31,6 +33,7 @@ fun SkillPanel(
                 bottom = 20.dp,
             ),
             list = skills,
+            removeItem = removeSkill
         )
     }
 }
@@ -46,6 +49,7 @@ fun DefaultPreviewSkillPanel() {
                 "sasddd", "addddd", "adasdasd", "assdsasdsad",
             ),
         ),
+        removeSkill = {}
     )
 }
 

@@ -23,6 +23,7 @@ fun ExperiencePanel(
     modifier: Modifier = Modifier,
     @StringRes titleId: Int,
     experiencesState: MutableState<List<Experience>>,
+    removeExperience: () -> Unit,
 ) {
 
     Panel(
@@ -44,6 +45,7 @@ fun ExperiencePanel(
                 Experience(
                     modifier = Modifier.padding(horizontal = 10.dp),
                     experience = experience,
+                    removeExperience = removeExperience
                 )
             }
         }
@@ -56,6 +58,7 @@ fun ExperiencePanel(
 @Composable
 fun DefaultPreviewExperiencePanel() {
     ExperiencePanel(
+        removeExperience = {},
         titleId = R.string.skills,
         experiencesState = mutableStateOf(
             listOf(

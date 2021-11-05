@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mentorica.R
 import com.mentorica.screens.edit_profile.SkillPanel
+import com.mentorica.ui.components.chips.Chips
 import com.mentorica.ui.theme.LightTransparentGray
 import com.mentorica.ui.theme.poppins
 import com.mentorica.ui.theme.poppinsBold
@@ -67,13 +68,12 @@ fun <T> Panel(
 @SuppressLint("UnrememberedMutableState")
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreviewExperiencePanel() {
-    SkillPanel(
-        skillsState = mutableStateOf(
-            listOf(
-                "asas", "asasas",
-                "sasddd", "addddd", "adasdasd", "assdsasdsad",
-            ),
-        ),
+fun DefaultPreviewPanel() {
+    Panel(
+        titleId = R.string.mentor,
+        itemsState = mutableStateOf(listOf("sd", "sad", "sad")),
+        content = {
+            Chips(list = it, removeItem = {})
+        },
     )
 }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chip"
+    style="@style/Widget.MaterialComponents.Chip.Entry"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/chip_background"
+    app:chipBackgroundColor="@color/blue_light"
     android:textAlignment="center"
     android:paddingVertical="5dp"
     android:paddingHorizontal="10dp"
@@ -15,7 +16,8 @@
     app:layout_constraintEnd_toEndOf="@id/image"
     app:layout_constraintStart_toStartOf="@id/image"
     app:layout_constraintTop_toTopOf="@id/image"
+    app:closeIcon="@drawable/ic_delete"
+    app:closeIconTint = "@color/white"
     tools:text="chip"
-
     />
 
