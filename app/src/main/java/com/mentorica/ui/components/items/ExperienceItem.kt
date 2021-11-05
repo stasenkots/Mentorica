@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -28,7 +29,11 @@ import com.mentorica.utils.formatToMonthYear
 import java.time.LocalDate
 
 @Composable
-fun Experience(modifier: Modifier = Modifier, experience: Experience) {
+fun Experience(
+    modifier: Modifier = Modifier,
+    experience: Experience,
+    removeExperience: () -> Unit,
+) {
 
     val boxShape = RoundedCornerShape(20)
     Box(
@@ -36,15 +41,22 @@ fun Experience(modifier: Modifier = Modifier, experience: Experience) {
             .clip(boxShape)
             .background(LightTransparentGray)
             .border(2.dp, Color.Gray, boxShape)
-            .padding(10.dp)
+            .padding(10.dp),
     ) {
         Column(
             modifier = Modifier,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+            Image(
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .clickable(onClick = removeExperience),
+                painter = painterResource(R.drawable.ic_delete),
+                contentDescription = null,
+            )
             Text(
                 modifier = Modifier
-                    .padding(8.dp),
+                    .padding(horizontal = 10.dp),
                 text = experience.companyName,
                 fontSize = title,
                 fontWeight = Bold,
@@ -74,6 +86,7 @@ fun Experience(modifier: Modifier = Modifier, experience: Experience) {
                 )
             }
             Text(
+                modifier = Modifier.padding(horizontal = 5.dp),
                 text = experience.position,
                 fontFamily = poppins,
             )
@@ -87,11 +100,12 @@ fun Experience(modifier: Modifier = Modifier, experience: Experience) {
 @Composable
 fun DefaultPreview() {
     Experience(
+        removeExperience={},
         experience = Experience(
             companyName = "Mentorica",
             from = LocalDate.now(),
             to = LocalDate.now(),
-            position = "Senior Dev",
+            position = "Senior Pomidor Developer",
         ),
     )
 }

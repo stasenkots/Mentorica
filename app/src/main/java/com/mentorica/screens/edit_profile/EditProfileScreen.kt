@@ -1,6 +1,7 @@
 package com.mentorica.screens.edit_profile
 
 import android.annotation.SuppressLint
+import android.view.View
 import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
@@ -41,22 +42,31 @@ import java.time.LocalDate
 @Composable
 fun EditProfileScreen(viewModel: EditProfileViewModel = hiltViewModel()) {
     EditScreen(
-        viewModel::saveUserData,
-        viewModel.user,
-        viewModel.editErrorState,
+        userState = viewModel.user,
+        editErrorState = viewModel.editErrorState,
+        save = viewModel::saveUserData,
+        removeSkill = viewModel::removeSkill,
+        removeWorkExperience = viewModel::removeWorkExperience,
+        removeEducationExperience = viewModel::removeEducationExperience,
     )
 }
 
 @Composable
 fun EditScreen(
-    save: () -> Unit,
     userState: UserState,
     editErrorState: EditErrorState,
+    removeSkill: (View) -> Unit,
+    save: () -> Unit,
+    removeWorkExperience: () -> Unit,
+    removeEducationExperience: () -> Unit,
 ) {
+
+    val scrollState = rememberScrollState()
 
     Column(
         modifier = Modifier
-            .background(Blue),
+            .background(Blue)
+            .verticalScroll(scrollState),
     ) {
         EditProfileTopBar(
             photoState = userState.photo,
@@ -64,6 +74,9 @@ fun EditScreen(
         EditProfileBody(
             userState = userState,
             editErrorState = editErrorState,
+            removeSkill = removeSkill,
+            removeEducationExperience = removeEducationExperience,
+            removeWorkExperience = removeWorkExperience,
         )
 
     }
@@ -127,9 +140,11 @@ fun EditProfileTopBar(
 fun EditProfileBody(
     userState: UserState,
     editErrorState: EditErrorState,
+    removeSkill: (View) -> Unit,
+    removeWorkExperience: () -> Unit,
+    removeEducationExperience: () -> Unit,
 ) {
 
-    val scrollState = rememberScrollState()
 
     Column(
         modifier = Modifier
@@ -142,7 +157,6 @@ fun EditProfileBody(
                 start = edit_screen_horizontal,
                 end = edit_screen_end,
             )
-            .verticalScroll(scrollState)
     ) {
         Spacer(Modifier.height(30.dp))
 
@@ -209,29 +223,32 @@ fun EditProfileBody(
         SkillPanel(
             modifier = Modifier.padding(
                 horizontal = edit_screen_horizontal,
-                vertical = edit_screen_vertical
+                vertical = edit_screen_vertical,
 
-            ),
+                ),
             skillsState = userState.technologies,
+            removeSkill = removeSkill,
         )
 
         ExperiencePanel(
             modifier = Modifier.padding(
                 horizontal = edit_screen_horizontal,
-                vertical = edit_screen_vertical
+                vertical = edit_screen_vertical,
             ),
             titleId = R.string.work_experience,
             experiencesState = userState.workExperience,
+            removeExperience = removeWorkExperience,
         )
 
         ExperiencePanel(
             modifier = Modifier.padding(
                 horizontal = edit_screen_horizontal,
-                vertical = edit_screen_vertical
+                vertical = edit_screen_vertical,
 
-            ),
+                ),
             titleId = R.string.education,
             experiencesState = userState.education,
+            removeExperience = removeEducationExperience,
         )
     }
 }
@@ -241,8 +258,8 @@ fun EditProfileBody(
 @Composable
 fun DefaultPreview() {
     EditScreen(
-        { },
-        UserState(
+        save = { },
+        userState = UserState(
             technologies = listOf("asdqsd", "asdsd", "adsdasd"),
             workExperience = listOf(
                 Experience(
@@ -259,6 +276,9 @@ fun DefaultPreview() {
                 ),
             ),
         ),
-        EditErrorState(),
+        editErrorState = EditErrorState(),
+        removeSkill = {},
+        removeEducationExperience = {},
+        removeWorkExperience = {}
     )
 }

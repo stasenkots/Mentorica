@@ -1,5 +1,6 @@
 package com.mentorica.screens.edit_profile
 
+import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mentorica.R
@@ -56,6 +57,17 @@ class EditProfileViewModel @Inject constructor(
 
             navigateTo(NavTarget.Main)
         }
+    }
+
+    fun removeSkill(view: View) {
+    }
+
+    fun removeEducationExperience(){
+
+    }
+
+    fun removeWorkExperience(){
+
     }
 
     private fun validFields(): Boolean {
