@@ -29,16 +29,35 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
         val description = data[UserLogin.description] as String
         val company = data[UserLogin.company] as String
         val isMentor = data[UserLogin.isMentor] as Boolean
+        val favorites = data[UserLogin.favorites] as List<String>
         val payment = data[UserLogin.payment] as Double?
-        val technologies = data[UserLogin.technologies] as Array<String>
-        val workExperience = data[UserLogin.workExperience] as Array<Experience>
-        val education = data[UserLogin.education] as Array<String>
-        val links = data[UserLogin.links] as Array<String>
+        val technologies = data[UserLogin.technologies] as List<String>
+        val workExperience = data[UserLogin.workExperience] as List<Experience>
+        val education = data[UserLogin.education] as List<Experience>
+        val links = data[UserLogin.links] as List<String>
+
+        setCurrentUser(
+            id = ParseUser.getCurrentUser().objectId,
+            photo = photo,
+            name = name,
+            surname = surname,
+            description = description,
+            position = position,
+            company = company,
+            isMentor = isMentor,
+            payment = payment,
+            technologies = technologies,
+            workExperience = workExperience,
+            education = education,
+            links = links,
+            favorites = favorites
+        )
     }
 
     fun initCurrentUser() {
         val user = ParseUser.getCurrentUser()
         setCurrentUser(
+            id = user.objectId,
             photo = user[UserLogin.photo] as String,
             name = user[UserLogin.name] as String,
             surname = user[UserLogin.surname] as String,
@@ -47,10 +66,11 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
             company = user[UserLogin.company] as String,
             isMentor = user[UserLogin.isMentor] as Boolean,
             payment = user[UserLogin.payment] as Double?,
-            technologies = user[UserLogin.technologies] as Array<String>,
-            workExperience = user[UserLogin.workExperience] as Array<Experience>,
-            education = user[UserLogin.education] as Array<String>,
-            links = user[UserLogin.links] as Array<String>,
+            technologies = user[UserLogin.technologies] as List<String>,
+            workExperience = user[UserLogin.workExperience] as List<Experience>,
+            education = user[UserLogin.education] as List<Experience>,
+            links = user[UserLogin.links] as List<String>,
+            favorites = user[UserLogin.favorites] as List<String>
         )
     }
 }

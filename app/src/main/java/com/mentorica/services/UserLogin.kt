@@ -16,6 +16,7 @@ object UserLogin {
     const val workExperience = "experience"
     const val education = "education"
     const val links = "links"
+    const val favorites = "favorites"
 
     val data = mutableMapOf<String, Any?>()
 }

@@ -137,13 +137,23 @@ fun DefaultPreview() {
         "qwerty123456",
         "https://thispersondoesnotexist.com/image", "John",
         "Doe", "freak", "Senior Dev", "Oracle", true,
-        10.0, arrayOf("JS", "Kotlin"), emptyArray(), arrayOf("BSU"), emptyArray(), emptyList(),
+        10.0, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
     )
     setCurrentUser(
-        "qwerty123456",
-        "https://thispersondoesnotexist.com/image", "John",
-        "Doe", "freak", "Senior Dev", "Oracle", true,
-        10.0, arrayOf("JS", "Kotlin"), emptyArray(), arrayOf("BSU"), emptyArray(), emptyList(),
+        id =user.id,
+        photo = user.photo,
+        name = user.name,
+        surname = user.surname,
+        description = user.description,
+        position = user.position,
+        company = user.company,
+        payment =  user.payment,
+        technologies = user.technologies,
+        education = user.education,
+        workExperience = user.workExperience,
+        favorites = user.favorites,
+        isMentor = user.isMentor,
+        links = user.links
     )
     MentorItem(user, onClick = {}, {}, {})
 }
