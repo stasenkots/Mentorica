@@ -13,7 +13,7 @@ class UserState(
     payment: String = "",
     technologies: List<String> = emptyList(),
     education: List<Experience> = emptyList(),
-    links: List<String> = emptyList(),
+    links: List<Link> = emptyList(),
     workExperience: List<Experience> = emptyList(),
 ) {
     val name = mutableStateOf(name)

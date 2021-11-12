@@ -13,7 +13,7 @@ data class User(
     val technologies: List<String>,
     val workExperience: List<Experience>,
     val education: List<Experience>,
-    val links: List<String>,
+    val links: List<Link>,
 )
 
 fun setCurrentUser(
@@ -29,7 +29,7 @@ fun setCurrentUser(
     technologies: List<String>,
     workExperience: List<Experience>,
     education: List<Experience>,
-    links: List<String>,
+    links: List<Link>,
 ) {
     _currentUser = User(
         id = id,
