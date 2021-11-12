@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mentorica.R
+import com.mentorica.models.Link
 import com.mentorica.models.Payment
 import com.mentorica.models.UserState
 import com.mentorica.models.currentUser
@@ -59,15 +60,17 @@ class EditProfileViewModel @Inject constructor(
         }
     }
 
+    fun removeLink(link: Link){
+
+    }
+
     fun removeSkill(view: View) {
     }
 
-    fun removeEducationExperience(){
-
+    fun removeEducationExperience() {
     }
 
-    fun removeWorkExperience(){
-
+    fun removeWorkExperience() {
     }
 
     private fun validFields(): Boolean {

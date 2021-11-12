@@ -25,7 +25,7 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
         technologies: List<String>,
         workExperience: List<Experience>,
         education: List<Experience>,
-        links: List<String>
+        links: List<Link>
     ) {
 
         val user = ParseUser.getCurrentUser()

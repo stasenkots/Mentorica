@@ -30,6 +30,7 @@ import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
 import com.mentorica.models.Experience
+import com.mentorica.models.Link
 import com.mentorica.models.Payment
 import com.mentorica.models.UserState
 import com.mentorica.ui.components.text.CheckBoxTextField
@@ -48,6 +49,7 @@ fun EditProfileScreen(viewModel: EditProfileViewModel = hiltViewModel()) {
         removeSkill = viewModel::removeSkill,
         removeWorkExperience = viewModel::removeWorkExperience,
         removeEducationExperience = viewModel::removeEducationExperience,
+        removeLink = viewModel::removeLink,
     )
 }
 
@@ -55,10 +57,11 @@ fun EditProfileScreen(viewModel: EditProfileViewModel = hiltViewModel()) {
 fun EditScreen(
     userState: UserState,
     editErrorState: EditErrorState,
-    removeSkill: (View) -> Unit,
     save: () -> Unit,
+    removeSkill: (View) -> Unit,
     removeWorkExperience: () -> Unit,
     removeEducationExperience: () -> Unit,
+    removeLink: (Link) -> Unit,
 ) {
 
     val scrollState = rememberScrollState()
@@ -77,6 +80,7 @@ fun EditScreen(
             removeSkill = removeSkill,
             removeEducationExperience = removeEducationExperience,
             removeWorkExperience = removeWorkExperience,
+            removeLink = removeLink,
         )
 
     }
@@ -143,8 +147,8 @@ fun EditProfileBody(
     removeSkill: (View) -> Unit,
     removeWorkExperience: () -> Unit,
     removeEducationExperience: () -> Unit,
+    removeLink: (Link) -> Unit,
 ) {
-
 
     Column(
         modifier = Modifier
@@ -156,7 +160,7 @@ fun EditProfileBody(
                 top = edit_screen_vertical,
                 start = edit_screen_horizontal,
                 end = edit_screen_end,
-            )
+            ),
     ) {
         Spacer(Modifier.height(30.dp))
 
@@ -244,11 +248,18 @@ fun EditProfileBody(
             modifier = Modifier.padding(
                 horizontal = edit_screen_horizontal,
                 vertical = edit_screen_vertical,
-
-                ),
+            ),
             titleId = R.string.education,
             experiencesState = userState.education,
             removeExperience = removeEducationExperience,
+        )
+        LinkPanel(
+            modifier = Modifier.padding(
+                horizontal = edit_screen_horizontal,
+                vertical = edit_screen_vertical,
+            ),
+            linksState = userState.links,
+            removeLink = removeLink,
         )
     }
 }
@@ -275,10 +286,15 @@ fun DefaultPreview() {
                     LocalDate.now(), LocalDate.now(), "Senior dev",
                 ),
             ),
+            links = listOf(
+                Link("Github", "https://github.com/stasenkots"),
+                Link("Linkedin", "https://www.linkedin.com/in/stasenkots/"),
+            ),
         ),
         editErrorState = EditErrorState(),
         removeSkill = {},
         removeEducationExperience = {},
-        removeWorkExperience = {}
+        removeWorkExperience = {},
+        removeLink = {},
     )
 }

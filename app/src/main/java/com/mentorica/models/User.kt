@@ -13,6 +13,6 @@ data class User(
     val technologies: List<String>,
     val workExperience: List<Experience>,
     val education: List<Experience>,
-    val links: List<String>,
+    val links: List<Link>,
     val favorites: List<String>
 )
