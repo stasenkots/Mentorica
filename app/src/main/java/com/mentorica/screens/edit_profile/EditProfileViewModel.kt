@@ -1,6 +1,5 @@
 package com.mentorica.screens.edit_profile
 
-import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mentorica.R
@@ -9,6 +8,7 @@ import com.mentorica.nav.NavTarget
 import com.mentorica.nav.Navigator
 import com.mentorica.repositories.UserRepository
 import com.mentorica.utils.launchIO
+import com.mentorica.utils.removeFromStateList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,7 +27,7 @@ class EditProfileViewModel @Inject constructor(
         company = currentUser.company,
         isMentor = currentUser.isMentor,
         payment = currentUser.payment.toString(),
-        technologies = currentUser.technologies,
+        skills = currentUser.skills,
         education = currentUser.education,
         links = currentUser.links,
         workExperience = currentUser.workExperience,
@@ -47,7 +47,7 @@ class EditProfileViewModel @Inject constructor(
                 company = user.company.value,
                 isMentor = user.isMentor.value,
                 payment = Payment(user.payment.value.toDouble()),
-                technologies = user.technologies.value,
+                skills = user.skills.value,
                 education = user.education.value,
                 links = user.links.value,
                 workExperience = user.workExperience.value,

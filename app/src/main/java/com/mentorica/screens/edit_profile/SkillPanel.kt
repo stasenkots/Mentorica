@@ -17,7 +17,7 @@ import com.mentorica.ui.components.chips.Chips
 @Composable
 fun SkillPanel(
     modifier: Modifier = Modifier,
-    skillsState: MutableState<List<String>>,
+    skillsState: MutableState<List<Skill>>,
     removeSkill: (Skill) -> Unit,
 ) {
 
@@ -37,7 +37,8 @@ fun SkillPanel(
                 end = 20.dp,
                 bottom = 20.dp,
             ),
-            list = skills,
+            list = skills
+                .map { it.skill },
             removeItem = removeItem,
         )
     }
@@ -49,10 +50,7 @@ fun SkillPanel(
 fun DefaultPreviewSkillPanel() {
     SkillPanel(
         skillsState = mutableStateOf(
-            listOf(
-                "asas", "asasas",
-                "sasddd", "addddd", "adasdasd", "assdsasdsad",
-            ),
+            listOf(),
         ),
         removeSkill = {},
     )

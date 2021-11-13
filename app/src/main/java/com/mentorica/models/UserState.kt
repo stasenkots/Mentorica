@@ -11,7 +11,7 @@ class UserState(
     company: String = "",
     isMentor: Boolean = false,
     payment: String = "",
-    technologies: List<String> = emptyList(),
+    skills: List<Skill> = emptyList(),
     education: List<Experience> = emptyList(),
     links: List<Link> = emptyList(),
     workExperience: List<Experience> = emptyList(),
@@ -24,7 +24,7 @@ class UserState(
     val company = mutableStateOf(company)
     val isMentor = mutableStateOf(isMentor)
     val payment = mutableStateOf(payment)
-    val technologies = mutableStateOf(technologies)
+    val skills = mutableStateOf(skills)
     val education = mutableStateOf(education)
     val links = mutableStateOf(links)
     val workExperience = mutableStateOf(workExperience)
