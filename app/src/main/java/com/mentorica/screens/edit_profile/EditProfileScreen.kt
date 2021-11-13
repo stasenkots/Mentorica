@@ -1,17 +1,11 @@
 package com.mentorica.screens.edit_profile
 
 import android.annotation.SuppressLint
-import android.view.View
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -28,7 +22,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
 import com.mentorica.models.*
@@ -232,7 +225,7 @@ fun EditProfileBody(
                 vertical = edit_screen_vertical,
 
                 ),
-            skillsState = userState.technologies,
+            skillsState = userState.skills,
             removeSkill = removeSkill,
         )
 
@@ -283,7 +276,7 @@ fun DefaultPreview() {
     EditScreen(
         save = { },
         userState = UserState(
-            technologies = listOf("asdqsd", "asdsd", "adsdasd"),
+            skills = listOf(Skill("asdqsd"), Skill("asdsd")),
             workExperience = listOf(
                 Experience(
                     "Mentorica",

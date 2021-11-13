@@ -22,7 +22,7 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
         company: String,
         isMentor: Boolean,
         payment: Payment,
-        technologies: List<String>,
+        skills: List<Skill>,
         workExperience: List<Experience>,
         education: List<Experience>,
         links: List<Link>
@@ -38,7 +38,7 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
         user.putOrIgnore(UserLogin.company, company)
         user.putOrIgnore(UserLogin.isMentor, isMentor)
         user.putOrIgnore(UserLogin.payment, payment)
-        user.putOrIgnore(UserLogin.technologies, technologies)
+        user.putOrIgnore(UserLogin.technologies, skills)
         user.putOrIgnore(UserLogin.workExperience, workExperience)
         user.putOrIgnore(UserLogin.education, education)
         user.putOrIgnore(UserLogin.links, links)
@@ -53,7 +53,7 @@ class UserRepository @Inject constructor(private val parseService: ParseService)
             company = company,
             isMentor = isMentor,
             payment = payment,
-            technologies = technologies,
+            skills = skills,
             workExperience = workExperience,
             education = education,
             links = links,
