@@ -58,48 +58,59 @@ class EditProfileViewModel @Inject constructor(
     }
 
     fun removeLink(link: Link) {
+        removeFromStateList(user.links, link)
     }
 
     fun removeSkill(skill: Skill) {
+        removeFromStateList(user.skills, skill)
     }
 
     fun removeEducationExperience(experience: Experience) {
+        removeFromStateList(user.education, experience)
     }
 
     fun removeWorkExperience(experience: Experience) {
+        removeFromStateList(user.workExperience, experience)
     }
 
     private fun validFields(): Boolean {
+        var result = true
         if(user.name.value.isBlank()) {
             editErrorState.name.value = R.string.cannot_be_empty
-            return false
+            result = false
         }
 
         if(user.surname.value.isBlank()) {
             editErrorState.surname.value = R.string.cannot_be_empty
-            return false
+            result = false
         }
 
         if(user.position.value.isBlank()) {
             editErrorState.position.value = R.string.cannot_be_empty
-            return false
+            result = false
         }
 
         if(user.description.value.isBlank()) {
             editErrorState.description.value = R.string.cannot_be_empty
-            return false
+            result = false
         }
 
         if(user.company.value.isBlank()) {
             editErrorState.company.value = R.string.cannot_be_empty
-            return false
+            result = false
         }
 
-        if(user.payment.value.toDoubleOrNull() == null) {
-            editErrorState.payment.value = R.string.invalid_input
-            return false
+        if(user.isMentor.value) {
+            if(user.payment.value.isBlank()) {
+                editErrorState.payment.value = R.string.cannot_be_empty
+                result = false
+            }
+            else if(user.payment.value.toDoubleOrNull() == null) {
+                editErrorState.payment.value = R.string.invalid_input
+                result = false
+            }
         }
 
-        return true
+        return result
     }
 }
