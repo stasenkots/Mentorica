@@ -10,12 +10,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -30,6 +32,7 @@ import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
 import com.mentorica.models.*
+import com.mentorica.ui.components.button.MButton
 import com.mentorica.ui.components.text.CheckBoxTextField
 import com.mentorica.ui.components.text.MTextField
 import com.mentorica.ui.theme.*
@@ -74,6 +77,7 @@ fun EditScreen(
         EditProfileBody(
             userState = userState,
             editErrorState = editErrorState,
+            save = save,
             removeSkill = removeSkill,
             removeEducationExperience = removeEducationExperience,
             removeWorkExperience = removeWorkExperience,
@@ -141,6 +145,7 @@ fun EditProfileTopBar(
 fun EditProfileBody(
     userState: UserState,
     editErrorState: EditErrorState,
+    save: () -> Unit,
     removeSkill: (Skill) -> Unit,
     removeWorkExperience: (Experience) -> Unit,
     removeEducationExperience: (Experience) -> Unit,
@@ -257,6 +262,16 @@ fun EditProfileBody(
             ),
             linksState = userState.links,
             removeLink = removeLink,
+        )
+        MButton(
+            modifier = Modifier
+                .align(CenterHorizontally)
+                .padding(
+                    top = 50.dp,
+                    bottom = 40.dp,
+                ),
+            text = stringResource(R.string.save),
+            onClick = save,
         )
     }
 }
