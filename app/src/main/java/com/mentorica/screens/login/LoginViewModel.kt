@@ -27,7 +27,6 @@ class LoginViewModel @Inject constructor(
     val passwordState = mutableStateOf("")
     var passwordError: MutableState<String?> = mutableStateOf(null)
     var loginError: MutableState<Int?> = mutableStateOf(null)
-
     var authType: AuthType? = null
 
     fun authenticate() {
