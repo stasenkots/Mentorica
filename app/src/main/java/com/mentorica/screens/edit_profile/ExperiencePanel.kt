@@ -23,7 +23,7 @@ fun ExperiencePanel(
     modifier: Modifier = Modifier,
     @StringRes titleId: Int,
     experiencesState: MutableState<List<Experience>>,
-    removeExperience: () -> Unit,
+    removeExperience: (Experience) -> Unit,
 ) {
 
     Panel(

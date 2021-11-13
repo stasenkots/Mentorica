@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mentorica.R
+import com.mentorica.models.Skill
 import com.mentorica.ui.components.Panel
 import com.mentorica.ui.components.chips.Chips
 
@@ -17,8 +18,12 @@ import com.mentorica.ui.components.chips.Chips
 fun SkillPanel(
     modifier: Modifier = Modifier,
     skillsState: MutableState<List<String>>,
-    removeSkill: (View) -> Unit,
+    removeSkill: (Skill) -> Unit,
 ) {
+
+    val removeItem = { s: String->
+        removeSkill(Skill(s))
+    }
 
     Panel(
         modifier = modifier,
@@ -33,7 +38,7 @@ fun SkillPanel(
                 bottom = 20.dp,
             ),
             list = skills,
-            removeItem = removeSkill
+            removeItem = removeItem,
         )
     }
 }
@@ -49,7 +54,7 @@ fun DefaultPreviewSkillPanel() {
                 "sasddd", "addddd", "adasdasd", "assdsasdsad",
             ),
         ),
-        removeSkill = {}
+        removeSkill = {},
     )
 }
 
