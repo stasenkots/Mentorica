@@ -32,7 +32,7 @@ import java.time.LocalDate
 fun Experience(
     modifier: Modifier = Modifier,
     experience: Experience,
-    removeExperience: () -> Unit,
+    removeExperience: (Experience) -> Unit,
 ) {
 
     val boxShape = RoundedCornerShape(20)
@@ -50,7 +50,7 @@ fun Experience(
             Image(
                 modifier = Modifier
                     .align(Alignment.End)
-                    .clickable(onClick = removeExperience),
+                    .clickable(onClick = { removeExperience(experience) }),
                 painter = painterResource(R.drawable.ic_delete),
                 contentDescription = null,
             )
@@ -100,7 +100,7 @@ fun Experience(
 @Composable
 fun DefaultPreview() {
     Experience(
-        removeExperience={},
+        removeExperience = {},
         experience = Experience(
             companyName = "Mentorica",
             from = LocalDate.now(),

@@ -10,12 +10,13 @@ import androidx.compose.ui.viewinterop.AndroidViewBinding
 import com.mentorica.R
 import com.mentorica.databinding.ChipBinding
 import com.mentorica.databinding.ChipsBinding
+import com.mentorica.models.Skill
 
 @Composable
 fun Chips(
     modifier: Modifier = Modifier,
     list: List<String>,
-    removeItem: (View) -> Unit,
+    removeItem: (String) -> Unit,
 ) {
     AndroidViewBinding(
         modifier = modifier,
@@ -26,7 +27,9 @@ fun Chips(
                 binding.chip.apply {
                     text = value
                     isCheckable = false
-                    setOnCloseIconClickListener(removeItem)
+                    setOnCloseIconClickListener {
+                        removeItem(value)
+                    }
                 }
                 root.addView(binding.chip)
             }

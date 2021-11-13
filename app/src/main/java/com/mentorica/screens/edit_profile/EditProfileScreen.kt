@@ -29,10 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
-import com.mentorica.models.Experience
-import com.mentorica.models.Link
-import com.mentorica.models.Payment
-import com.mentorica.models.UserState
+import com.mentorica.models.*
 import com.mentorica.ui.components.text.CheckBoxTextField
 import com.mentorica.ui.components.text.MTextField
 import com.mentorica.ui.theme.*
@@ -58,9 +55,9 @@ fun EditScreen(
     userState: UserState,
     editErrorState: EditErrorState,
     save: () -> Unit,
-    removeSkill: (View) -> Unit,
-    removeWorkExperience: () -> Unit,
-    removeEducationExperience: () -> Unit,
+    removeSkill: (Skill) -> Unit,
+    removeWorkExperience: (Experience) -> Unit,
+    removeEducationExperience: (Experience) -> Unit,
     removeLink: (Link) -> Unit,
 ) {
 
@@ -144,9 +141,9 @@ fun EditProfileTopBar(
 fun EditProfileBody(
     userState: UserState,
     editErrorState: EditErrorState,
-    removeSkill: (View) -> Unit,
-    removeWorkExperience: () -> Unit,
-    removeEducationExperience: () -> Unit,
+    removeSkill: (Skill) -> Unit,
+    removeWorkExperience: (Experience) -> Unit,
+    removeEducationExperience: (Experience) -> Unit,
     removeLink: (Link) -> Unit,
 ) {
 
