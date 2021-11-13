@@ -6,10 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Card
-import androidx.compose.material.Checkbox
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.*
@@ -24,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.mentorica.models.AuthType
 import com.mentorica.screens.login.Login
 import com.mentorica.R
+import com.mentorica.ui.theme.Blue
 import com.mentorica.ui.theme.edit_screen_horizontal
 import com.mentorica.ui.theme.edit_screen_vertical
 
@@ -65,6 +63,7 @@ fun CheckBoxTextField(
                 modifier = Modifier.fillMaxWidth(),
                 checked = checked,
                 onCheckedChange = { checked = it },
+                colors = CheckboxDefaults.colors(checkedColor = Blue)
             )
         }
     }
