@@ -42,7 +42,7 @@ class LoginViewModel @Inject constructor(
                     authType,
                 )
                 withContext(Dispatchers.Main) {
-                    navigator.navigateTo(NavTarget.EditScreen)
+                    navigator.navigateTo(NavTarget.EditProfileScreen)
                 }
             }
         }

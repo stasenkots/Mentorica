@@ -15,5 +15,5 @@ sealed class NavTarget(val label: String) {
             .build()
     }
 
-    object EditScreen: NavTarget("edit")
+    object EditProfileScreen: NavTarget("edit")
 }
