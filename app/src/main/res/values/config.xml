@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back4app_server_url" >https://mentorica.b4a.io</string>
+    <string name="back4app_app_id" >9VkRjYJp5YT4mGsSFaUHZ019sMbMxyZBNYl5s3EO</string>
+    <string name="back4app_client_key">aJsSaXydNNmxo1dxWaaePdcB9Wm7E0QCaWJZ288m</string>
+</resources>
