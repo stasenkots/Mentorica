@@ -24,20 +24,17 @@ jobs:
         run: ./gradlew detekt
       - name: Run Unit tests
         run: ./gradlew test
-  collect-artifacts:
-      runs-on: ubuntu-latest
-      needs: [build]
-      if: always() && needs.build.result == 'failure'
-      steps:
-        - name: Collect actifacts
-          run: 
+      - name: Collect actifacts
+        if: always()
+        run: 
             mkdir artifacts
-            cp /home/runner/work/Mentorica/Mentorica/app/build/reports/detekt/detekt.html artifacts/
-        - name: Download detekt report
-          uses: actions/upload-artifact@v3
-          with:
-            name: artifacts
-            path: artifacts
+            cp app/build/reports/detekt/detekt.html artifacts/
+      - name: Download detekt report
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts
+          path: artifacts
+   
 
     
 
