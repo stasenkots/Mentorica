@@ -3,6 +3,11 @@ plugins {
     kotlin(Plugins.android)
     kotlin(Plugins.kapt)
     id(Plugins.hilt)
+    id(Plugins.detekt) version Versions.detekt
+}
+
+detekt {
+    config = files("$rootDir/scripts/detekt/config.yml")
 }
 
 android {

@@ -16,4 +16,5 @@ object Versions {
     const val material = "1.4.0"
     const val coil = "1.3.2"
     const val coilLandscapist = "1.3.6"
+    const val detekt = "1.21.0-RC1"
 }
