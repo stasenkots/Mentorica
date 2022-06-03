@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("checkstyle")
+    id("io.gitlab.arturbosch.detekt") version ("1.21.0-RC1")
 }
 
 
