@@ -26,10 +26,11 @@ jobs:
         run: ./gradlew test
       - name: Collect actifacts
         if: always()
-        run: 
+        run: |
             mkdir artifacts
             cp app/build/reports/detekt/detekt.html artifacts/
-      - name: Download detekt report
+      - name: Upload actifacts
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: artifacts
