@@ -18,9 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
       - name:  Checkstyle
         run: ./gradlew clean check
       - name: Run Unit tests
         run: ./gradlew test
-      - name: Checkout the code
-        uses: actions/checkout@v2
+
