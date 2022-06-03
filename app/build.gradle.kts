@@ -1,11 +1,9 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
-    id("io.gitlab.arturbosch.detekt") version ("1.21.0-RC1")
+    id(Plugins.application)
+    kotlin(Plugins.android)
+    kotlin(Plugins.kapt)
+    id(Plugins.hilt)
 }
-
 
 android {
     compileSdk = ConfigData.compileSdk
@@ -94,5 +92,4 @@ dependencies {
     implementation(Deps.composePreview)
     implementation(Deps.composeActivity)
     debugImplementation(Deps.composeUiTooling)
-
 }
