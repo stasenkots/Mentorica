@@ -20,8 +20,8 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      - name:  Checkstyle
-        run: ./gradlew clean check
+      - name: Detekt
+        run: ./gradlew detekt
       - name: Run Unit tests
         run: ./gradlew test
 
