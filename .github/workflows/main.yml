@@ -32,9 +32,9 @@ jobs:
         - name: Collect actifacts
           run: 
             mkdir artifacts
-            cp app/build/reports/detekt/detekt.html artifacts/
+            cp /home/runner/work/Mentorica/Mentorica/app/build/reports/detekt/detekt.html artifacts/
         - name: Download detekt report
-          uses: actions/download-artifact@v3
+          uses: actions/upload-artifact@v3
           with:
             name: artifacts
             path: artifacts
