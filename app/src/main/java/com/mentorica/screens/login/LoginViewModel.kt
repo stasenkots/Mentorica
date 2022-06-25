@@ -66,8 +66,4 @@ class LoginViewModel @Inject constructor(
             } else true
         }
     }
-
-    companion object {
-
-    }
 }

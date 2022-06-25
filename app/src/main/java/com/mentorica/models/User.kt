@@ -1,7 +1,7 @@
 package com.mentorica.models
 
 data class User(
-    val id:String,
+    val id: String,
     val photo: String,
     val name: String,
     val surname: String,
@@ -14,5 +14,5 @@ data class User(
     val workExperience: List<Experience>,
     val education: List<Experience>,
     val links: List<String>,
-    val favorites:List<String>
+    val favorites: List<String>
 )

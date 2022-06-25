@@ -123,23 +123,23 @@ fun MentorItem(
     }
 }
 
+@Suppress("MagicNumber")
 @ExperimentalMaterialApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    val payment = 10.0
     val user = User(
         "qwerty123456",
         "https://thispersondoesnotexist.com/image", "John",
         "Doe", "freak", "Senior Dev", "Oracle", true,
-        payment, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
+        10.0, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
     )
 
     val currentUser = User(
         "23",
         "https://thispersondoesnotexist.com/image", "John",
         "Doe", "freak", "Senior Dev", "Oracle", true,
-        payment, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
+        10.0, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
     )
     MentorItem(currentUser, user, onClick = {}, {}, {})
 }
