@@ -8,6 +8,11 @@ object Deps {
     const val parseSdk = "com.github.parse-community.Parse-SDK-Android:parse:${Versions.parseSdk}"
     const val parseSdkKtx = "com.github.parse-community.Parse-SDK-Android:ktx:${Versions.parseSdk}"
 
+    //Network
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val gsonConverterFactory = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
+
     //Coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 

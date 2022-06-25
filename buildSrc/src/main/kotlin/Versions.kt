@@ -3,6 +3,7 @@ object Versions {
     const val hiltGradlePlugin = "2.38.1"
     const val kotlin = "1.6.10"
     const val parseSdk = "1.25.0"
+    const val retrofit = "2.9.0"
     const val coroutines = "1.5.1"
     const val navigation = "2.4.0-alpha10"
     const val hiltNavigation = "1.0.0-alpha03"

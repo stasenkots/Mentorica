@@ -68,6 +68,10 @@ dependencies {
     implementation(Deps.parseSdk)
     implementation(Deps.parseSdkKtx)
 
+    //Network
+    implementation(Deps.retrofit)
+    implementation(Deps.gsonConverterFactory)
+
     //Coroutines
     implementation(Deps.coroutines)
 
