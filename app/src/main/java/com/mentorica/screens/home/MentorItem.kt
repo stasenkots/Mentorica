@@ -1,36 +1,30 @@
 package com.mentorica.screens.home
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.*
+import androidx.compose.ui.graphics.*
+import androidx.compose.ui.res.*
+import androidx.compose.ui.text.font.*
+import androidx.compose.ui.tooling.preview.*
+import androidx.compose.ui.unit.*
+import com.mentorica.R
 import com.mentorica.models.User
 import com.mentorica.services.UserLogin.photo
 import com.mentorica.ui.theme.BlueOpacity
-import com.skydoves.landscapist.ShimmerParams
-import com.skydoves.landscapist.coil.CoilImage
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
-import com.mentorica.R
-import com.mentorica.models.currentUser
-import com.mentorica.models.setCurrentUser
 import com.mentorica.ui.theme.BlueOpacityDark
 import com.mentorica.ui.theme.DarkBlueText
 import com.mentorica.utils.getPaymentFormat
+import com.skydoves.landscapist.ShimmerParams
+import com.skydoves.landscapist.coil.CoilImage
 
 @ExperimentalMaterialApi
 @Composable
 fun MentorItem(
+    currentUser: User,
     user: User,
     onClick: () -> Unit,
     addToFavorites: (String) -> Unit,
@@ -139,21 +133,12 @@ fun DefaultPreview() {
         "Doe", "freak", "Senior Dev", "Oracle", true,
         10.0, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
     )
-    setCurrentUser(
-        id =user.id,
-        photo = user.photo,
-        name = user.name,
-        surname = user.surname,
-        description = user.description,
-        position = user.position,
-        company = user.company,
-        payment =  user.payment,
-        technologies = user.technologies,
-        education = user.education,
-        workExperience = user.workExperience,
-        favorites = user.favorites,
-        isMentor = user.isMentor,
-        links = user.links
+
+    val currentUser = User(
+        "23",
+        "https://thispersondoesnotexist.com/image", "John",
+        "Doe", "freak", "Senior Dev", "Oracle", true,
+        10.0, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
     )
-    MentorItem(user, onClick = {}, {}, {})
+    MentorItem(currentUser, user, onClick = {}, {}, {})
 }

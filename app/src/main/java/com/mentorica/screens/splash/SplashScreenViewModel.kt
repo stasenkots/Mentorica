@@ -20,7 +20,6 @@ class SplashScreenViewModel @Inject constructor(
 
     private fun checkIsUserLoggedIn() {
         if (userRepository.isUserLoggedIn()) {
-            userRepository.initCurrentUser()
             navigateTo(Main)
         } else {
             navigateTo(GetStartedScreen)

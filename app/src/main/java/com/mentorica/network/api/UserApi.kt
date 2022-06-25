@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface UserApi {
 
     @GET("users/myCurrentUserId")
-    fun getCurrentUser(): User
+    suspend fun getCurrentUser(): User?
 }

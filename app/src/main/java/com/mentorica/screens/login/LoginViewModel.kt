@@ -4,35 +4,52 @@ import android.text.TextUtils
 import android.util.Patterns.EMAIL_ADDRESS
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.mentorica.R
+import com.mentorica.models.AuthType
 import com.mentorica.nav.EditScreen
 import com.mentorica.nav.Navigator
-import com.mentorica.services.UserLogin
+import com.mentorica.repositories.UserRepository
 import com.mentorica.utils.constants.MIN_PASSWORD_LENGTH
 import com.mentorica.utils.constants.MIN_PASSWORD_LENGTH_IS_NOT_REACHED
+import com.mentorica.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
+    private val userRepository: UserRepository,
     private val navigator: Navigator,
 ) : ViewModel(), Navigator by navigator {
 
-    val email = mutableStateOf("")
-    val password = mutableStateOf("")
+    val emailState = mutableStateOf("")
+    val passwordState = mutableStateOf("")
     var passwordError: MutableState<String?> = mutableStateOf(null)
     var loginError: MutableState<Int?> = mutableStateOf(null)
 
+    var authType: AuthType? = null
+
     fun authenticate() {
         if (checkLogin() && checkPassword()) {
-            UserLogin.data[UserLogin.username] = email
-            UserLogin.data[UserLogin.password] = password
+            loginOrRegister()
             navigator.navigateTo(EditScreen)
         }
     }
 
+    private fun loginOrRegister(){
+        checkNotNull(authType) { error("AuthType is not set")}
+        viewModelScope.launchIO {
+            val email = emailState.value
+            val password = passwordState.value
+            when (authType) {
+                AuthType.Login -> userRepository.login(email, password)
+                AuthType.Register -> userRepository.register(email, password)
+            }
+        }
+    }
+
     private fun checkPassword(): Boolean {
-        if (password.value.length < MIN_PASSWORD_LENGTH) {
+        if (passwordState.value.length < MIN_PASSWORD_LENGTH) {
             passwordError.value = MIN_PASSWORD_LENGTH_IS_NOT_REACHED
             return false
         }
@@ -40,10 +57,10 @@ class LoginViewModel @Inject constructor(
     }
 
     private fun checkLogin(): Boolean {
-        return if (TextUtils.isEmpty(email.value)) {
+        return if (TextUtils.isEmpty(emailState.value)) {
             false;
         } else {
-            if (!EMAIL_ADDRESS.matcher(email.value).matches()) {
+            if (!EMAIL_ADDRESS.matcher(emailState.value).matches()) {
                 loginError.value = R.string.invalid_email_address_error
                 false
             } else true
