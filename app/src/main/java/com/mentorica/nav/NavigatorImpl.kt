@@ -2,7 +2,6 @@ package com.mentorica.nav
 
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import timber.log.Timber
 import javax.inject.Inject
 
 class NavigatorImpl @Inject constructor(): Navigator {

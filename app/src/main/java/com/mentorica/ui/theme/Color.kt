@@ -1,5 +1,6 @@
-package com.mentorica.ui.theme
+@file:Suppress("MagicNumber")
 
+package com.mentorica.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val Purple200 = Color(0xFFBB86FC)

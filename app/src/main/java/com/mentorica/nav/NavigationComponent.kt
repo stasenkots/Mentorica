@@ -7,12 +7,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mentorica.models.AuthType
-import com.mentorica.screens.get_started.GetStartedScreen
-import com.mentorica.screens.login.Login
+import com.mentorica.screens.started.GetStartedScreen
 import com.mentorica.screens.login.LoginScreen
 import com.mentorica.screens.splash.SplashScreen
 import com.mentorica.utils.NAVIGATION
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber

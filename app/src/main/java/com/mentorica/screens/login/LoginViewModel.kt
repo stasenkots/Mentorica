@@ -7,8 +7,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.mentorica.R
 import com.mentorica.nav.EditScreen
-import com.mentorica.nav.NavRoute
-import com.mentorica.nav.NavTarget
 import com.mentorica.nav.Navigator
 import com.mentorica.services.UserLogin
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -41,10 +39,10 @@ class LoginViewModel @Inject constructor(
     }
 
     private fun checkLogin(): Boolean {
-        return if (TextUtils.isEmpty(email.value)) {
+        return if(TextUtils.isEmpty(email.value)) {
             false;
         } else {
-            if(!EMAIL_ADDRESS.matcher(email.value).matches()){
+            if(!EMAIL_ADDRESS.matcher(email.value).matches()) {
                 loginError.value = R.string.login_error_1
                 false
             } else true

@@ -15,5 +15,4 @@ interface NavigationModule {
     @Binds
     @Singleton
     fun navigator(navigatorImpl: NavigatorImpl): Navigator
-
 }
