@@ -45,7 +45,7 @@ fun Login(
     emailState: MutableState<String>,
     passwordState: MutableState<String>,
     loginErrorState: MutableState<Int?>,
-    passwordErrorState: MutableState<Int?>,
+    passwordErrorState: MutableState<String?>,
 ) {
 
     Image(

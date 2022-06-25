@@ -1,26 +1,22 @@
 package com.mentorica.ui.components.text
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material.icons.outlined.Visibility
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.material.icons.*
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.*
+import androidx.compose.ui.res.*
+import androidx.compose.ui.text.input.*
 import com.mentorica.R
 import com.mentorica.ui.theme.Blue
 
 @Composable
 fun PasswordText(
     passwordState: MutableState<String>,
-    errorState: MutableState<Int?>,
+    errorState: MutableState<String?>,
 ) {
 
     var password by remember { passwordState }
@@ -58,7 +54,6 @@ fun PasswordText(
         visualTransformation = if(passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
     )
     if(error != null) {
-        val id = checkNotNull(error)
-        ErrorText(text = stringResource(id = id))
+        ErrorText(text = checkNotNull(error))
     }
 }

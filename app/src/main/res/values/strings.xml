@@ -11,8 +11,7 @@
     <string name="join_community">Join community!</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
-    <string name="pass_error_1">Password length must be more than 8</string>
-    <string name="login_error_1">Email address isn\'t valid</string>
+    <string name="invalid_email_address_error">Email address isn\'t valid</string>
     <string name="failed_to_load_image">Fail to load image!</string>
     <string name="user_status">%1s in %2s</string>
     <string name="user_payment">%1sp/h</string>
