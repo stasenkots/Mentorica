@@ -6,6 +6,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.mentorica.R
+import com.mentorica.nav.EditScreen
+import com.mentorica.nav.NavRoute
 import com.mentorica.nav.NavTarget
 import com.mentorica.nav.Navigator
 import com.mentorica.services.UserLogin
@@ -26,7 +28,7 @@ class LoginViewModel @Inject constructor(
         if(checkLogin() && checkPassword()) {
             UserLogin.data[UserLogin.username] = email
             UserLogin.data[UserLogin.password] = password
-            navigator.navigateTo(NavTarget.EditScreen)
+            navigator.navigateTo(EditScreen)
         }
     }
 

@@ -1,7 +1,8 @@
 package com.mentorica.screens.splash
 
 import androidx.lifecycle.ViewModel
-import com.mentorica.nav.NavTarget
+import com.mentorica.nav.GetStartedScreen
+import com.mentorica.nav.Main
 import com.mentorica.nav.Navigator
 import com.mentorica.repositories.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,9 +21,9 @@ class SplashScreenViewModel @Inject constructor(
     private fun checkIsUserLoggedIn() {
         if (userRepository.isUserLoggedIn()) {
             userRepository.initCurrentUser()
-            navigateTo(NavTarget.Main)
+            navigateTo(Main)
         } else {
-            navigateTo(NavTarget.GetStartedScreen)
+            navigateTo(GetStartedScreen)
         }
     }
 }

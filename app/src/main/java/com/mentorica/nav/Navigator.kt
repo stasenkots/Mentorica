@@ -4,8 +4,8 @@ import kotlinx.coroutines.flow.SharedFlow
 
 interface Navigator {
 
-    val events: SharedFlow<NavTarget>
+    val events: SharedFlow<NavRoute>
 
-    fun navigateTo(navTarget: NavTarget)
+    fun navigateTo(navRoute: NavRoute)
 
 }

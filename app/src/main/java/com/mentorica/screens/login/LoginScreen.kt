@@ -97,7 +97,7 @@ fun Login(
                 errorState = passwordErrorState,
             )
 
-            val buttonText = if(authType == AuthType.login) {
+            val buttonText = if(authType == AuthType.Login) {
                 stringResource(R.string.login)
             } else {
                 stringResource(R.string.register)
@@ -124,7 +124,7 @@ fun Login(
 fun DefaultPreview() {
     Login(
         { },
-        AuthType.register,
+        AuthType.Register,
         mutableStateOf("asdasdsad"),
         mutableStateOf(""),
         mutableStateOf(null),

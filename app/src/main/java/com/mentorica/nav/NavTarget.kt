@@ -1,19 +1,11 @@
 package com.mentorica.nav
 
-import androidx.navigation.NavOptions
-import com.mentorica.models.AuthType
+enum class NavTarget(val screenName: String, vararg args: String) {
+    SplashScreen("splash"),
+    GetStartedScreen("get started"),
+    LoginScreen("login", LOGIN_TYPE),
+    EditScreen("edit"),
+    Main("main");
 
-sealed class NavTarget(val label: String) {
-
-    object SplashScreen: NavTarget("splash")
-    object GetStartedScreen: NavTarget("get started")
-    class LoginScreen(authType: AuthType = AuthType.none): NavTarget("login/${authType.value}")
-    object Main: NavTarget("main") {
-        val navOptionsBuilder = NavOptions.Builder()
-            .setLaunchSingleTop(true)
-            .setPopUpTo(SplashScreen.label, true)
-            .build()
-    }
-
-    object EditScreen: NavTarget("edit")
+    val path: String = NavUtils.composePath(screenName, args.toList())
 }

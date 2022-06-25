@@ -1,3 +1,4 @@
+
 plugins {
     id(Plugins.application)
     kotlin(Plugins.android)
@@ -33,8 +34,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -95,4 +96,15 @@ dependencies {
     implementation(Deps.composePreview)
     implementation(Deps.composeActivity)
     debugImplementation(Deps.composeUiTooling)
+
+    //Tests
+    testImplementation(platform(Deps.junitBom))
+    testImplementation(Deps.junit)
+    androidTestImplementation(Deps.androidExtJunit)
+    testImplementation(Deps.mockk)
+    testImplementation(Deps.assertJ)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

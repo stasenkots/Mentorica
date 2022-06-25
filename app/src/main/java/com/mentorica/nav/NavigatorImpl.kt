@@ -7,10 +7,10 @@ import javax.inject.Inject
 
 class NavigatorImpl @Inject constructor(): Navigator {
     private val _sharedFlow =
-        MutableSharedFlow<NavTarget>(extraBufferCapacity = 1)
+        MutableSharedFlow<NavRoute>(extraBufferCapacity = 1)
     override val events = _sharedFlow.asSharedFlow()
 
-    override fun navigateTo(navTarget: NavTarget) {
-        _sharedFlow.tryEmit(navTarget)
+    override fun navigateTo(navRoute: NavRoute) {
+        _sharedFlow.tryEmit(navRoute)
     }
 }

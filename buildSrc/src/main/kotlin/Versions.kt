@@ -17,4 +17,8 @@ object Versions {
     const val coil = "1.3.2"
     const val coilLandscapist = "1.3.6"
     const val detekt = "1.21.0-RC1"
+    const val junit = "5.8.2"
+    const val androidExtJunit = "1.1.3"
+    const val mockk = "1.12.4"
+    const val assertJ = "3.21.0"
 }

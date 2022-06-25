@@ -36,4 +36,11 @@ object Deps {
     const val composePreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
     const val composeActivity = "androidx.activity:activity-compose:${Versions.compose}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+
+    //Test
+    const val junitBom = "org.junit:junit-bom:${Versions.junit}"
+    const val junit = "org.junit.jupiter:junit-jupiter"
+    const val androidExtJunit = "androidx.test.ext:junit:${Versions.androidExtJunit}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val assertJ = "org.assertj:assertj-core:${Versions.assertJ}"
 }
