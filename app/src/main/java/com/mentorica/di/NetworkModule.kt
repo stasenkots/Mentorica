@@ -1,5 +1,6 @@
 package com.mentorica.di
 
+import com.mentorica.network.api.UserApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +13,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
-
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
@@ -22,7 +22,18 @@ class NetworkModule {
             .build()
     }
 
+
+    @Provides
+    @Singleton
+    fun provideUserApi(
+        retrofit: Retrofit
+    ): UserApi = retrofit.create(UserApi::class.java)
+
+
+
     companion object {
         private const val BASE_URL = "https://mentorica.b4a.io"
     }
+
+
 }
