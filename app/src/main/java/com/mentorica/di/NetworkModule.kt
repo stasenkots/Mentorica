@@ -30,10 +30,7 @@ class NetworkModule {
     ): UserApi = retrofit.create(UserApi::class.java)
 
 
-
     companion object {
         private const val BASE_URL = "https://mentorica.b4a.io"
     }
-
-
 }

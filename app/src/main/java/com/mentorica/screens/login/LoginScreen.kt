@@ -123,7 +123,7 @@ fun DefaultPreview() {
         AuthType.Register,
         mutableStateOf("asdasdsad"),
         mutableStateOf(""),
-        mutableStateOf(12),
+        mutableStateOf(10),
         mutableStateOf(null)
     )
 }

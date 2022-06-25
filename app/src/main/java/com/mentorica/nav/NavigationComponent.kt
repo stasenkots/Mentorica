@@ -10,7 +10,7 @@ import com.mentorica.models.AuthType
 import com.mentorica.screens.started.GetStartedScreen
 import com.mentorica.screens.login.LoginScreen
 import com.mentorica.screens.splash.SplashScreen
-import com.mentorica.utils.NAVIGATION
+import com.mentorica.utils.constants.NAVIGATION
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber

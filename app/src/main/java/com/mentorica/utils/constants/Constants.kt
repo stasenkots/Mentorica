@@ -1,3 +1,3 @@
-package com.mentorica.utils
+package com.mentorica.utils.constants
 
 const val NAVIGATION = "navigation"
