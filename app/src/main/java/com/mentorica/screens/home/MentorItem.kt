@@ -13,7 +13,6 @@ import androidx.compose.ui.tooling.preview.*
 import androidx.compose.ui.unit.*
 import com.mentorica.R
 import com.mentorica.models.User
-import com.mentorica.services.UserLogin.photo
 import com.mentorica.ui.theme.BlueOpacity
 import com.mentorica.ui.theme.BlueOpacityDark
 import com.mentorica.ui.theme.DarkBlueText
@@ -49,7 +48,7 @@ fun MentorItem(
         ) {
             Spacer(modifier = Modifier.width(15.dp))
             CoilImage(
-                imageModel = photo,
+                imageModel = "photo",
                 modifier = Modifier
                     .border(0.dp, Color.Black, CircleShape)
                     .width(100.dp)

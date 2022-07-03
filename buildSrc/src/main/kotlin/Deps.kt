@@ -11,7 +11,10 @@ object Deps {
     //Network
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverterFactory = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
 
+    //Cache
+    val datastore = "androidx.datastore:datastore-preferences-core:${Versions.dataStore}"
 
     //Coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"

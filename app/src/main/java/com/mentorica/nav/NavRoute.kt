@@ -8,7 +8,7 @@ sealed class NavRoute(val path: String, val navOptions: NavOptions? = null)
 object SplashScreen: NavRoute(NavTarget.SplashScreen.screenName)
 object GetStartedScreen: NavRoute(NavTarget.GetStartedScreen.screenName)
 class LoginScreen(authType: AuthType): NavRoute(
-    NavTarget.GetStartedScreen.screenName + "/$authType",
+    NavTarget.LoginScreen.screenName + "/$authType",
 )
 
 object Main: NavRoute(

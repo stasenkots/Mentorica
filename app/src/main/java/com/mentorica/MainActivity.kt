@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.tooling.preview.*
 import androidx.navigation.compose.rememberNavController
 import com.mentorica.nav.NavigationComponent
 import com.mentorica.nav.Navigator
 import com.mentorica.ui.theme.MentoricaTheme
-import com.mentorica.utils.GlobalStates.errorBus
+import com.mentorica.utils.extentions.errorBus
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

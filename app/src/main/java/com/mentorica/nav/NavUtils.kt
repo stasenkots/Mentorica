@@ -4,6 +4,6 @@ object NavUtils {
 
     fun composePath(screenName: String, args: List<String>): String {
         val stringOfArgs = args.joinToString(separator = "/") { "{$it}" }
-        return "$screenName/$stringOfArgs"
+        return if (stringOfArgs.isEmpty()) screenName else "$screenName/$stringOfArgs"
     }
 }

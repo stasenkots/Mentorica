@@ -9,10 +9,11 @@ import com.mentorica.R
 import com.mentorica.models.AuthType
 import com.mentorica.nav.EditScreen
 import com.mentorica.nav.Navigator
-import com.mentorica.repositories.UserRepository
+import com.mentorica.user.UserRepository
 import com.mentorica.utils.constants.MIN_PASSWORD_LENGTH
 import com.mentorica.utils.constants.MIN_PASSWORD_LENGTH_IS_NOT_REACHED
-import com.mentorica.utils.launchIO
+import com.mentorica.utils.extentions.launchIO
+import com.mentorica.utils.extentions.launchUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -32,18 +33,22 @@ class LoginViewModel @Inject constructor(
     fun authenticate() {
         if (checkLogin() && checkPassword()) {
             loginOrRegister()
-            navigator.navigateTo(EditScreen)
         }
     }
 
-    private fun loginOrRegister(){
-        checkNotNull(authType) { error("AuthType is not set")}
+    private fun loginOrRegister() {
+        checkNotNull(authType) { error("AuthType is not set") }
         viewModelScope.launchIO {
             val email = emailState.value
             val password = passwordState.value
             when (authType) {
                 AuthType.Login -> userRepository.login(email, password)
-                AuthType.Register -> userRepository.register(email, password)
+                AuthType.Register -> userRepository.signUp(email, password)
+            }
+            launchUI {
+                if (userRepository.currentUser != null) {
+                    navigator.navigateTo(EditScreen)
+                }
             }
         }
     }

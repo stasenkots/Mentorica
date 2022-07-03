@@ -1,5 +1,7 @@
+package nav
+
 import com.mentorica.nav.NavUtils
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -23,6 +25,7 @@ class NavUtilsTest {
             return Stream.of(
                 Arguments.of(listOf("arg1", "arg2", "arg3"), "$SCREEN_NAME/{arg1}/{arg2}/{arg3}"),
                 Arguments.of(listOf("arg1"), "$SCREEN_NAME/{arg1}"),
+                Arguments.of(emptyList<String>(), SCREEN_NAME),
             )
         }
 

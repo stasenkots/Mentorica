@@ -71,6 +71,10 @@ dependencies {
     //Network
     implementation(Deps.retrofit)
     implementation(Deps.gsonConverterFactory)
+    implementation(Deps.loggingInterceptor)
+
+    //Cache
+    implementation(Deps.datastore)
 
     //Coroutines
     implementation(Deps.coroutines)
