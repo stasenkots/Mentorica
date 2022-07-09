@@ -2,24 +2,16 @@ package com.mentorica.ui.components.text
 
 import android.annotation.SuppressLint
 import androidx.annotation.StringRes
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.mentorica.models.AuthType
-import com.mentorica.screens.login.Login
+import androidx.compose.ui.*
+import androidx.compose.ui.graphics.*
+import androidx.compose.ui.res.*
+import androidx.compose.ui.tooling.preview.*
+import androidx.compose.ui.unit.*
 import com.mentorica.R
 import com.mentorica.ui.theme.Blue
 import com.mentorica.ui.theme.edit_screen_horizontal
@@ -40,32 +32,30 @@ fun CheckBoxTextField(
                 shape = CircleShape
             ),
     ) {
-        Row(
+
+        Image(
+            painter = painterResource(R.drawable.blue_circle),
+            contentDescription = null,
             modifier = Modifier.padding(
-                horizontal = 10.dp,
-                vertical = 16.dp,
+                top = 10.dp,
+                start = 10.dp
             ),
-        ) {
-            Image(
-                painter = painterResource(R.drawable.blue_circle),
-                contentDescription = null,
-                modifier = Modifier.padding(),
-            )
-            Text(
-                text = stringResource(text),
-                fontSize = 18.sp,
-                modifier = Modifier
-                    .fillMaxWidth(0.9F)
-                    .padding(horizontal = 5.dp),
-                color = Color.Gray,
-            )
-            Checkbox(
-                modifier = Modifier.fillMaxWidth(),
-                checked = checked,
-                onCheckedChange = { checked = it },
-                colors = CheckboxDefaults.colors(checkedColor = Blue)
-            )
-        }
+        )
+        Text(
+            text = stringResource(text),
+            fontSize = 18.sp,
+            modifier = Modifier
+                .fillMaxWidth(0.9F)
+                .padding(top = 10.dp, start = 5.dp),
+            color = Color.Gray,
+        )
+        Checkbox(
+            modifier = Modifier.padding(end = 10.dp),
+            checked = checked,
+            onCheckedChange = { checked = it },
+            colors = CheckboxDefaults.colors(checkedColor = Blue)
+        )
+
     }
 }
 

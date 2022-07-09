@@ -1,15 +1,15 @@
 package com.mentorica.nav
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import android.os.Bundle
+import androidx.compose.runtime.*
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mentorica.models.AuthType
 import com.mentorica.screens.edit_profile.EditProfileScreen
-import com.mentorica.screens.started.GetStartedScreen
 import com.mentorica.screens.login.LoginScreen
 import com.mentorica.screens.splash.SplashScreen
+import com.mentorica.screens.started.GetStartedScreen
 import com.mentorica.utils.constants.NAVIGATION
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

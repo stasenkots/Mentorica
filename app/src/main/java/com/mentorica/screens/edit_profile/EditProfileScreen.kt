@@ -1,34 +1,37 @@
 package com.mentorica.screens.edit_profile
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.shape.*
+import androidx.compose.foundation.text.*
+import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.ui.*
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.draw.*
+import androidx.compose.ui.graphics.*
+import androidx.compose.ui.res.*
+import androidx.compose.ui.text.font.*
+import androidx.compose.ui.text.input.*
+import androidx.compose.ui.tooling.preview.*
+import androidx.compose.ui.unit.*
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mentorica.R
-import com.mentorica.models.*
+import com.mentorica.models.Experience
+import com.mentorica.models.Link
+import com.mentorica.models.Payment
+import com.mentorica.models.Skill
+import com.mentorica.models.User
+import com.mentorica.models.UserState
 import com.mentorica.ui.components.button.MButton
 import com.mentorica.ui.components.text.CheckBoxTextField
 import com.mentorica.ui.components.text.MTextField
-import com.mentorica.ui.theme.*
+import com.mentorica.ui.theme.Blue
+import com.mentorica.ui.theme.edit_screen_end
+import com.mentorica.ui.theme.edit_screen_horizontal
+import com.mentorica.ui.theme.edit_screen_vertical
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
 import java.time.LocalDate
@@ -36,7 +39,7 @@ import java.time.LocalDate
 @Composable
 fun EditProfileScreen(viewModel: EditProfileViewModel = hiltViewModel()) {
     EditScreen(
-        userState = viewModel.user,
+        userState = viewModel.userState,
         editErrorState = viewModel.editErrorState,
         save = viewModel::saveUserData,
         removeSkill = viewModel::removeSkill,
@@ -82,7 +85,7 @@ fun EditScreen(
 
 @Composable
 fun EditProfileTopBar(
-    photoState: MutableState<String>,
+    photoState: MutableState<Uri>,
 ) {
     val photo by remember { photoState }
 
@@ -93,7 +96,7 @@ fun EditProfileTopBar(
         ) {
         Spacer(Modifier.height(20.dp))
         Text(
-            modifier = Modifier.align(Alignment.CenterHorizontally),
+            modifier = Modifier.align(CenterHorizontally),
             text = stringResource(R.string.profile),
             color = Color.White,
             fontWeight = FontWeight.SemiBold,
@@ -101,7 +104,7 @@ fun EditProfileTopBar(
         )
 
         Spacer(Modifier.height(20.dp))
-        Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+        Box(modifier = Modifier.align(CenterHorizontally)) {
 
             CoilImage(
                 imageModel = photo,
@@ -199,16 +202,16 @@ fun EditProfileBody(
             hint = R.string.company,
             errorState = editErrorState.company,
             modifier = textModifier,
+
         )
 
         CheckBoxTextField(
-            modifier = textModifier
-                .padding(vertical = edit_screen_vertical),
+            modifier = textModifier,
             text = R.string.mentor,
             checkedState = userState.isMentor,
         )
 
-        if(userState.isMentor.value) {
+        if (userState.isMentor.value) {
             MTextField(
                 textState = userState.payment,
                 hint = R.string.payment,
@@ -276,24 +279,37 @@ fun DefaultPreview() {
     EditScreen(
         save = { },
         userState = UserState(
-            skills = listOf(Skill("asdqsd"), Skill("asdsd")),
-            workExperience = listOf(
-                Experience(
-                    "Mentorica",
-                    LocalDate.now(), LocalDate.now(), "Senior dev",
+            User(
+                skills = listOf(Skill("asdqsd"), Skill("asdsd")),
+                workExperience = listOf(
+                    Experience(
+                        "Mentorica",
+                        LocalDate.now(), LocalDate.now(), "Senior dev",
+                    ),
+                    Experience(
+                        "Facebook",
+                        LocalDate.now(), LocalDate.now(), "Senior dev",
+                    ),
+                    Experience(
+                        "Yandex",
+                        LocalDate.now(), LocalDate.now(), "Senior dev",
+                    ),
                 ),
-                Experience(
-                    "Facebook",
-                    LocalDate.now(), LocalDate.now(), "Senior dev",
+                links = listOf(
+                    Link("Github", "https://github.com/stasenkots"),
+                    Link("Linkedin", "https://www.linkedin.com/in/stasenkots/"),
                 ),
-                Experience(
-                    "Yandex",
-                    LocalDate.now(), LocalDate.now(), "Senior dev",
-                ),
-            ),
-            links = listOf(
-                Link("Github", "https://github.com/stasenkots"),
-                Link("Linkedin", "https://www.linkedin.com/in/stasenkots/"),
+                id = "dssa",
+                isMentor = true,
+                surname = "sdasd",
+                name = "sdsad",
+                education = emptyList(),
+                photo = Uri.EMPTY,
+                description = "sadad",
+                position = "sadad",
+                company = "sdadasd",
+                payment = Payment(10.0),
+                favorites = emptyList()
             ),
         ),
         editErrorState = EditErrorState(),

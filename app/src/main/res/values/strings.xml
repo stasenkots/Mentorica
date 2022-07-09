@@ -33,4 +33,6 @@
     <string name="education">Education</string>
     <string name="links">Links</string>
     <string name="save">Save</string>
+    <string name="no_position">No position</string>
+    <string name="no_company">No Company</string>
 </resources>

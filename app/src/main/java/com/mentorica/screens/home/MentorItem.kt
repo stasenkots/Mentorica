@@ -1,5 +1,6 @@
 package com.mentorica.screens.home
 
+import android.net.Uri
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.*
@@ -12,6 +13,8 @@ import androidx.compose.ui.text.font.*
 import androidx.compose.ui.tooling.preview.*
 import androidx.compose.ui.unit.*
 import com.mentorica.R
+import com.mentorica.models.Payment
+import com.mentorica.models.Skill
 import com.mentorica.models.User
 import com.mentorica.ui.theme.BlueOpacity
 import com.mentorica.ui.theme.BlueOpacityDark
@@ -30,9 +33,11 @@ fun MentorItem(
     removeToFavorites: (String) -> Unit,
 ) {
     val fullName = "${user.name} ${user.surname}"
-    val status = stringResource(R.string.user_status, user.position, user.company)
-    val payment = if(user.payment != null)
-        stringResource(R.string.user_payment, getPaymentFormat(user.payment)) else null
+    val position = user.position ?: stringResource(R.string.no_position)
+    val company = user.company ?: stringResource(R.string.no_company)
+    val status = stringResource(R.string.user_status, position, company)
+    val payment = if(user.payment.isBlank().not())
+        stringResource(R.string.user_payment, getPaymentFormat(user.payment.amount)) else null
     var isFavorite by remember { mutableStateOf(currentUser.favorites.contains(user.id)) }
     Card(onClick = onClick) {
         Row(
@@ -129,16 +134,16 @@ fun MentorItem(
 fun DefaultPreview() {
     val user = User(
         "qwerty123456",
-        "https://thispersondoesnotexist.com/image", "John",
+        Uri.parse("https://thispersondoesnotexist.com/image"), "John",
         "Doe", "freak", "Senior Dev", "Oracle", true,
-        10.0, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
+        Payment(10.0), listOf(Skill("JS"), Skill("Kotlin")), emptyList(), emptyList(), emptyList(), emptyList()
     )
 
     val currentUser = User(
         "23",
-        "https://thispersondoesnotexist.com/image", "John",
+        Uri.parse("https://thispersondoesnotexist.com/image"), "John",
         "Doe", "freak", "Senior Dev", "Oracle", true,
-        10.0, listOf("JS", "Kotlin"), emptyList(), emptyList(), emptyList(), emptyList()
+        Payment(10.0), listOf(Skill("JS"), Skill("Kotlin")), emptyList(), emptyList(), emptyList(), emptyList()
     )
     MentorItem(currentUser, user, onClick = {}, {}, {})
 }

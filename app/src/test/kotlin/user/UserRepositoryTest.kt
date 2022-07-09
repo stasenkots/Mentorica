@@ -1,8 +1,9 @@
 package user
 
 import com.mentorica.models.LoginData
-import com.mentorica.models.User
 import com.mentorica.network.api.UserApi
+import com.mentorica.network.dto.UserDto
+import com.mentorica.network.mapping.UserMapper
 import com.mentorica.user.UserRepository
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -16,10 +17,11 @@ import retrofit2.HttpException
 class UserRepositoryTest {
 
     val userApi: UserApi = mockk()
-    val expectedUser: User = mockk()
+    val expectedUser: UserDto = mockk()
     val httpException: HttpException = mockk()
+    val mapper: UserMapper = mockk()
 
-    val userRepository = UserRepository(userApi)
+    val userRepository = UserRepository(userApi, mapper)
 
 
     @Test

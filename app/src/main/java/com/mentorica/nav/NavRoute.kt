@@ -19,4 +19,4 @@ object Main: NavRoute(
         .build(),
 )
 
-object EditScreen: NavRoute(NavTarget.EditScreen.screenName)
+object EditScreen: NavRoute(NavTarget.EditProfileScreen.screenName)

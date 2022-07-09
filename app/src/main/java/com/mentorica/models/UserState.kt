@@ -1,31 +1,38 @@
 package com.mentorica.models
 
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 
-class UserState(
-    name: String = "",
-    surname: String = "",
-    photo: String = "",
-    position: String = "",
-    description: String = "",
-    company: String = "",
-    isMentor: Boolean = false,
-    payment: String = "",
-    skills: List<Skill> = emptyList(),
-    education: List<Experience> = emptyList(),
-    links: List<Link> = emptyList(),
-    workExperience: List<Experience> = emptyList(),
-) {
-    val name = mutableStateOf(name)
-    val surname = mutableStateOf(surname)
-    val photo = mutableStateOf(photo)
-    val position = mutableStateOf(position)
-    val description = mutableStateOf(description)
-    val company = mutableStateOf(company)
-    val isMentor = mutableStateOf(isMentor)
-    val payment = mutableStateOf(payment)
-    val skills = mutableStateOf(skills)
-    val education = mutableStateOf(education)
-    val links = mutableStateOf(links)
-    val workExperience = mutableStateOf(workExperience)
+class UserState(user: User) {
+    val id = user.id
+    val name = mutableStateOf(user.name)
+    val surname = mutableStateOf(user.surname)
+    val photo = mutableStateOf(user.photo)
+    val position = mutableStateOf(user.position)
+    val description = mutableStateOf(user.description)
+    val company = mutableStateOf(user.company)
+    val isMentor = mutableStateOf(user.isMentor)
+    val payment = mutableStateOf(user.payment.toString())
+    val skills = mutableStateOf(user.skills)
+    val education = mutableStateOf(user.education)
+    val links = mutableStateOf(user.links)
+    val workExperience = mutableStateOf(user.workExperience)
+
+    fun getUser(): User{
+        return User(
+            name = name.value,
+            surname = surname.value,
+            photo = photo.value,
+            position = position.value,
+            description = description.value,
+            company = company.value,
+            isMentor = isMentor.value,
+            payment = Payment(payment.value.toDouble()),
+            skills = skills.value,
+            education = education.value,
+            links = links.value,
+            workExperience = workExperience.value,
+            favorites = emptyList(),
+            id = id
+        )
+    }
 }

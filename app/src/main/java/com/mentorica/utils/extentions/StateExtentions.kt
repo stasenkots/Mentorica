@@ -1,6 +1,6 @@
-package com.mentorica.utils
+package com.mentorica.utils.extentions
 
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.*
 
 fun <T> removeFromStateList(state: MutableState<List<T>>, value: T) {
     val list = state.value.toMutableList()

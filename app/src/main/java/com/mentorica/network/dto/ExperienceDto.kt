@@ -1,8 +1,8 @@
-package com.mentorica.models
+package com.mentorica.network.dto
 
 import java.time.LocalDate
 
-data class Experience(
+data class ExperienceDto(
     val companyName: String,
     val startDate: LocalDate,
     val endDate: LocalDate,

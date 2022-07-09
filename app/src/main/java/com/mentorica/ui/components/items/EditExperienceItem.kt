@@ -76,8 +76,8 @@ fun Experience(
                     painter = painterResource(R.drawable.ic_business),
                     contentDescription = null,
                 )
-                val from = formatToMonthYear(experience.from)
-                val to = formatToMonthYear(experience.to)
+                val from = formatToMonthYear(experience.startDate)
+                val to = formatToMonthYear(experience.endDate)
 
                 Text(
                     modifier = Modifier.align(Alignment.Bottom),
@@ -103,8 +103,8 @@ fun DefaultPreview() {
         removeExperience = {},
         experience = Experience(
             companyName = "Mentorica",
-            from = LocalDate.now(),
-            to = LocalDate.now(),
+            startDate = LocalDate.now(),
+            endDate = LocalDate.now(),
             position = "Senior Pomidor Developer",
         ),
     )
