@@ -5,7 +5,12 @@ enum class NavTarget(val screenName: String, vararg args: String) {
     GetStartedScreen("get_started"),
     LoginScreen("login", LOGIN_TYPE),
     EditProfileScreen("edit"),
-    Main("main");
+    MainScreen("main"),
+    HomeScreen("home"),
+    FavoritesScreen("favorites"),
+    Chat("chat"),
+    Profile("profile");
+
 
     val path: String = NavUtils.composePath(screenName, args.toList())
 }

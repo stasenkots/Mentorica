@@ -1,4 +1,4 @@
-package com.mentorica.screens.home
+package com.mentorica.ui.components
 
 import android.net.Uri
 import androidx.compose.foundation.*

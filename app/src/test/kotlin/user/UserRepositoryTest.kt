@@ -1,11 +1,13 @@
 package user
 
 import com.mentorica.models.LoginData
+import com.mentorica.models.User
 import com.mentorica.network.api.UserApi
 import com.mentorica.network.dto.UserDto
 import com.mentorica.network.mapping.UserMapper
 import com.mentorica.user.UserRepository
 import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
@@ -17,9 +19,13 @@ import retrofit2.HttpException
 class UserRepositoryTest {
 
     val userApi: UserApi = mockk()
-    val expectedUser: UserDto = mockk()
+    val expectedUserDto: UserDto = mockk()
+    val expectedUser: User = mockk()
     val httpException: HttpException = mockk()
-    val mapper: UserMapper = mockk()
+    val mapper: UserMapper = mockk{
+        every { map(expectedUserDto) } returns expectedUser
+        every { map(expectedUser) } returns expectedUserDto
+    }
 
     val userRepository = UserRepository(userApi, mapper)
 
@@ -43,7 +49,7 @@ class UserRepositoryTest {
 
     @Test
     fun `test initialization successful`() {
-        coEvery { userApi.getCurrentUser() } returns expectedUser
+        coEvery { userApi.getCurrentUser() } returns expectedUserDto
 
         runBlocking { userRepository.initCurrentUser() }
 
@@ -54,7 +60,7 @@ class UserRepositoryTest {
     @Test
     fun `test sign up`() {
         val loginData = LoginData(LOGIN, PASSWORD)
-        coEvery { userApi.signUp(loginData) } returns expectedUser
+        coEvery { userApi.signUp(loginData) } returns expectedUserDto
 
         runBlocking {
             userRepository.signUp(LOGIN, PASSWORD)
@@ -78,7 +84,7 @@ class UserRepositoryTest {
 
     @Test
     fun `test login`() {
-        coEvery { userApi.login(LOGIN, PASSWORD) } returns expectedUser
+        coEvery { userApi.login(LOGIN, PASSWORD) } returns expectedUserDto
 
         runBlocking {
             userRepository.login(LOGIN, PASSWORD)

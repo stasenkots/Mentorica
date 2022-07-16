@@ -6,7 +6,7 @@ import com.mentorica.models.Experience
 import com.mentorica.models.Link
 import com.mentorica.models.Skill
 import com.mentorica.models.UserState
-import com.mentorica.nav.Main
+import com.mentorica.nav.MainScreen
 import com.mentorica.nav.Navigator
 import com.mentorica.user.UserRepository
 import com.mentorica.utils.extentions.launchIO
@@ -32,7 +32,7 @@ class EditProfileViewModel @Inject constructor(
         }
         viewModelScope.launchIO {
             userRepository.update(userState.getUser())
-            navigateTo(Main)
+            navigateTo(MainScreen)
         }
     }
 
