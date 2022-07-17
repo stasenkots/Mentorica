@@ -1,6 +1,5 @@
 package com.mentorica.network.mapping
 
-import android.net.Uri
 import com.mentorica.models.Experience
 import com.mentorica.models.Link
 import com.mentorica.models.Payment
@@ -16,8 +15,8 @@ class UserMapper @Inject constructor(){
     fun map(userDto: UserDto): User {
         return User(
             id = userDto.id,
-            name = userDto.name,
-            surname = userDto.surname,
+            name = userDto.name.orEmpty(),
+            surname = userDto.surname.orEmpty(),
             isMentor = userDto.isMentor,
             position = userDto.position,
             payment = Payment(userDto.payment),
@@ -28,7 +27,7 @@ class UserMapper @Inject constructor(){
             education = userDto.workExperience.map { map(it) },
             favorites = userDto.favorites,
             description = userDto.description.orEmpty(),
-            photo =  userDto.photo?.let { Uri.parse(it) } ?: Uri.EMPTY
+            photo =  userDto.photo.orEmpty()
         )
     }
 
@@ -47,7 +46,7 @@ class UserMapper @Inject constructor(){
             education = user.workExperience.map { map(it) },
             favorites = user.favorites,
             description = user.description,
-            photo = user.photo.toString()
+            photo = user.photo
         )
     }
 

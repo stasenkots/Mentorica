@@ -8,9 +8,9 @@ data class UserDto(
     @SerializedName("photo")
     val photo: String?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("surname")
-    val surname: String,
+    val surname: String?,
     @SerializedName("description")
     val description: String?,
     @SerializedName("position")

@@ -1,7 +1,6 @@
 package com.mentorica.screens.edit_profile
 
 import android.annotation.SuppressLint
-import android.net.Uri
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.*
@@ -25,6 +24,7 @@ import com.mentorica.models.Payment
 import com.mentorica.models.Skill
 import com.mentorica.models.User
 import com.mentorica.models.UserState
+import com.mentorica.ui.components.MentoricaImage
 import com.mentorica.ui.components.button.MButton
 import com.mentorica.ui.components.text.CheckBoxTextField
 import com.mentorica.ui.components.text.MTextField
@@ -32,8 +32,7 @@ import com.mentorica.ui.theme.Blue
 import com.mentorica.ui.theme.edit_screen_end
 import com.mentorica.ui.theme.edit_screen_horizontal
 import com.mentorica.ui.theme.edit_screen_vertical
-import com.skydoves.landscapist.ShimmerParams
-import com.skydoves.landscapist.coil.CoilImage
+import com.mentorica.utils.constants.ServerConstants
 import java.time.LocalDate
 
 @Composable
@@ -85,7 +84,7 @@ fun EditScreen(
 
 @Composable
 fun EditProfileTopBar(
-    photoState: MutableState<Uri>,
+    photoState: MutableState<String>,
 ) {
     val photo by remember { photoState }
 
@@ -105,24 +104,7 @@ fun EditProfileTopBar(
 
         Spacer(Modifier.height(20.dp))
         Box(modifier = Modifier.align(CenterHorizontally)) {
-
-            CoilImage(
-                imageModel = photo,
-                modifier = Modifier
-                    .border(0.dp, Color.Black, CircleShape)
-                    .width(140.dp)
-                    .height(140.dp),
-                shimmerParams = ShimmerParams(
-                    baseColor = MaterialTheme.colors.background,
-                    highlightColor = Color.White,
-                    durationMillis = 350,
-                    dropOff = 0.65f,
-                    tilt = 20f,
-                ),
-                failure = {
-                    Text(text = stringResource(R.string.failed_to_load_image))
-                },
-            )
+            MentoricaImage(image = photo, width = 140.dp, height = 140.dp)
             Image(
                 painter = painterResource(R.drawable.edit),
                 contentDescription = "",
@@ -203,7 +185,7 @@ fun EditProfileBody(
             errorState = editErrorState.company,
             modifier = textModifier,
 
-        )
+            )
 
         CheckBoxTextField(
             modifier = textModifier,
@@ -304,7 +286,7 @@ fun DefaultPreview() {
                 surname = "sdasd",
                 name = "sdsad",
                 education = emptyList(),
-                photo = Uri.EMPTY,
+                photo = ServerConstants.DEFAULT_IMAGE_URL,
                 description = "sadad",
                 position = "sadad",
                 company = "sdadasd",

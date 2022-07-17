@@ -1,10 +1,8 @@
 package com.mentorica.models
 
-import android.net.Uri
-
 data class User(
     val id: String,
-    val photo: Uri,
+    val photo: String,
     val name: String,
     val surname: String,
     val description: String,

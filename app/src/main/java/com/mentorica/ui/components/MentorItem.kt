@@ -1,13 +1,12 @@
 package com.mentorica.ui.components
 
-import android.net.Uri
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
-import androidx.compose.ui.graphics.*
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.tooling.preview.*
@@ -20,8 +19,6 @@ import com.mentorica.ui.theme.BlueOpacity
 import com.mentorica.ui.theme.BlueOpacityDark
 import com.mentorica.ui.theme.DarkBlueText
 import com.mentorica.utils.getPaymentFormat
-import com.skydoves.landscapist.ShimmerParams
-import com.skydoves.landscapist.coil.CoilImage
 
 @ExperimentalMaterialApi
 @Composable
@@ -36,7 +33,7 @@ fun MentorItem(
     val position = user.position ?: stringResource(R.string.no_position)
     val company = user.company ?: stringResource(R.string.no_company)
     val status = stringResource(R.string.user_status, position, company)
-    val payment = if(user.payment.isBlank().not())
+    val payment = if (user.payment.isBlank().not())
         stringResource(R.string.user_payment, getPaymentFormat(user.payment.amount)) else null
     var isFavorite by remember { mutableStateOf(currentUser.favorites.contains(user.id)) }
     Card(onClick = onClick) {
@@ -52,23 +49,11 @@ fun MentorItem(
                 ),
         ) {
             Spacer(modifier = Modifier.width(15.dp))
-            CoilImage(
-                imageModel = "photo",
-                modifier = Modifier
-                    .border(0.dp, Color.Black, CircleShape)
-                    .width(100.dp)
-                    .height(100.dp)
-                    .align(Alignment.CenterVertically),
-                shimmerParams = ShimmerParams(
-                    baseColor = MaterialTheme.colors.background,
-                    highlightColor = Color.White,
-                    durationMillis = 350,
-                    dropOff = 0.65f,
-                    tilt = 20f,
-                ),
-                failure = {
-                    Text(text = stringResource(R.string.failed_to_load_image))
-                },
+            MentoricaImage(
+                modifier = Modifier.align(CenterVertically),
+                image = currentUser.photo,
+                width = 100.dp,
+                height = 100.dp
             )
             Spacer(modifier = Modifier.width(40.dp))
             Column(
@@ -87,7 +72,7 @@ fun MentorItem(
                     color = DarkBlueText,
                     fontSize = 12.sp,
                 )
-                if(payment != null) {
+                if (payment != null) {
                     Text(
                         modifier = Modifier.padding(vertical = 8.dp),
                         text = payment,
@@ -105,7 +90,7 @@ fun MentorItem(
                     .align(Alignment.CenterVertically),
             ) {
                 val onClickFavorite = {
-                    if(isFavorite) removeToFavorites(user.id)
+                    if (isFavorite) removeToFavorites(user.id)
                     else addToFavorites(user.id)
                     isFavorite = !isFavorite
                 }
@@ -113,7 +98,7 @@ fun MentorItem(
                     modifier = Modifier.size(64.dp),
                     onClick = onClickFavorite,
                 ) {
-                    val iconFavoriteId = if(isFavorite) R.drawable.ic_favorite_filled
+                    val iconFavoriteId = if (isFavorite) R.drawable.ic_favorite_filled
                     else R.drawable.ic_favorite_empty
                     Icon(
                         modifier = Modifier.size(64.dp),
@@ -134,16 +119,36 @@ fun MentorItem(
 fun DefaultPreview() {
     val user = User(
         "qwerty123456",
-        Uri.parse("https://thispersondoesnotexist.com/image"), "John",
-        "Doe", "freak", "Senior Dev", "Oracle", true,
-        Payment(10.0), listOf(Skill("JS"), Skill("Kotlin")), emptyList(), emptyList(), emptyList(), emptyList()
+        "https://thispersondoesnotexist.com/image",
+        "John",
+        "Doe",
+        "freak",
+        "Senior Dev",
+        "Oracle",
+        true,
+        Payment(10.0),
+        listOf(Skill("JS"), Skill("Kotlin")),
+        emptyList(),
+        emptyList(),
+        emptyList(),
+        emptyList()
     )
 
     val currentUser = User(
         "23",
-        Uri.parse("https://thispersondoesnotexist.com/image"), "John",
-        "Doe", "freak", "Senior Dev", "Oracle", true,
-        Payment(10.0), listOf(Skill("JS"), Skill("Kotlin")), emptyList(), emptyList(), emptyList(), emptyList()
+        "https://thispersondoesnotexist.com/image",
+        "John",
+        "Doe",
+        "freak",
+        "Senior Dev",
+        "Oracle",
+        true,
+        Payment(10.0),
+        listOf(Skill("JS"), Skill("Kotlin")),
+        emptyList(),
+        emptyList(),
+        emptyList(),
+        emptyList()
     )
     MentorItem(currentUser, user, onClick = {}, {}, {})
 }

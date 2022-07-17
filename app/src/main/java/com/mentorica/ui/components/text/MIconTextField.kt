@@ -2,21 +2,13 @@ package com.mentorica.ui.components.text
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.*
+import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import com.mentorica.R
-import com.mentorica.ui.components.text.ErrorText
+import androidx.compose.ui.*
+import androidx.compose.ui.res.*
 import com.mentorica.ui.theme.Blue
-import java.lang.Error
 
 @Composable
 fun MIconTextField(
@@ -50,6 +42,7 @@ fun MIconTextField(
             focusedLabelColor = Blue,
         ),
         isError = error != null,
+        maxLines = 1
     )
     if(error != null) {
         val id = checkNotNull(error)

@@ -3,7 +3,7 @@ package com.mentorica.screens.splash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mentorica.nav.GetStartedScreen
-import com.mentorica.nav.Main
+import com.mentorica.nav.MainScreen
 import com.mentorica.nav.Navigator
 import com.mentorica.user.UserRepository
 import com.mentorica.utils.extentions.launchIO
@@ -24,8 +24,8 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     private fun checkIsUserLoggedIn() {
-        if (userRepository.isUserLoggedIn()) {
-            navigateTo(Main)
+         if (userRepository.isUserLoggedIn()) {
+            navigateTo(MainScreen)
         } else {
             navigateTo(GetStartedScreen)
         }
